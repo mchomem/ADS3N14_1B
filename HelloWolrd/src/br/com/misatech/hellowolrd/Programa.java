@@ -14,14 +14,14 @@ public class Programa {
 	 */
 	public static void main(String []args) {
 		
-		new Programa().initialMessage();
+		new Programa().exibirMensagem();
 		
 	}
 	
 	/**
 	 * Exibe uma mensagem initial no console.
 	 */
-	public void initialMessage() {
+	public void exibirMensagem() {
 		
 		System.out.println("Olá mundo, estou no GitHub");
 		
