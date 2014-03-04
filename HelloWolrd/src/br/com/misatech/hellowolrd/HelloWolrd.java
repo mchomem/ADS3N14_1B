@@ -18,7 +18,7 @@ public class HelloWolrd {
 	 */
 	public void exibirMensagem() {
 		
-		System.out.println("Olá mundo, estou no GitHub!");
+		System.out.println("Hello, you!");
 		
 	}
 
