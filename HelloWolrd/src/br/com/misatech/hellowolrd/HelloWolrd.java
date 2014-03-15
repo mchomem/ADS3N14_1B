@@ -18,7 +18,7 @@ public class HelloWolrd {
 	 */
 	public void exibirMensagem() {
 		
-		System.out.println("Hello, you");
+		System.out.println("Hello, you!");
 		
 	}
 
