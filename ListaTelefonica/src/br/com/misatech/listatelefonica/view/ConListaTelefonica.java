@@ -2,8 +2,6 @@ package br.com.misatech.listatelefonica.view;
 
 import java.util.Scanner;
 
-import br.com.misatech.listatelefonica.model.No;
-
 /**
  * Classe representando o Menu da aplicação em interface de console.
  * 
@@ -110,13 +108,13 @@ public class ConListaTelefonica {
 	}
 	
 	/**
-	 * Trata a impressão de um nó de lista encadeada.
+	 * Trata a impressão dos valores da lista encadeada.
 	 * 
-	 * @param no Um objeto do tipo nó de lista encadeada.
+	 * @param lista valores contidos na lista.
 	 */
-	public <T> void imprimirLista(No<T> no) {
+	public void imprimirLista(String lista) {
 		
-		System.out.println(no);
+		System.out.println(lista);
 		
 	}
 

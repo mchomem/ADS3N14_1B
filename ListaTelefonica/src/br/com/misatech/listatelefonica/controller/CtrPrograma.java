@@ -1,16 +1,26 @@
 package br.com.misatech.listatelefonica.controller;
 
+import java.awt.HeadlessException;
+import java.io.IOException;
+
+import br.com.misatech.listatelefonica.model.Arquivo;
+import br.com.misatech.listatelefonica.model.ListaEncadeada;
+import br.com.misatech.listatelefonica.model.No;
 import br.com.misatech.listatelefonica.view.ConListaTelefonica;
 
 /**
  * Classe controladora
  * 
  * @author Misael C. Homem
+ * @param <T>
  * @since 1.00
  */
-public class CtrPrograma {
+public class CtrPrograma<T> {
 	
 	private ConListaTelefonica clt;
+	private ListaEncadeada<String> lista;
+	private No<String> novo;
+	
 	
 	/**
 	 * Construtor padrão inicializando os campos.
@@ -18,13 +28,92 @@ public class CtrPrograma {
 	public CtrPrograma() {
 		
 		clt = new ConListaTelefonica();
+		lista = new ListaEncadeada<String>();
 		
+	}
+	
+	
+	/**
+	 * Inicializa lista conforme valores gravados no arquivo listaTelefonica.txt
+	 * 
+	 * @throws HeadlessException
+	 * @throws IOException
+	 */
+	public void inicializaLista() throws HeadlessException, IOException{
+		
+		try {
+			
+			//ListaEncadeada<String> lista = new ListaEncadeada<String>();	
+			
+			Arquivo arquivo = new Arquivo();
+			No<String> anterior = null;
+			String linhaArquivo;
+			
+			while( (linhaArquivo = arquivo.consultar())!= null) {
+			
+				String[] valores = linhaArquivo.split("\\|");
+				
+				if(valores[2].equals("A")) {
+					
+					// A lista está vazia? Se sim, insere o 1º elemento.
+					if(lista.getHead() == null) {
+						
+						No<String> nodo = new No<String>(linhaArquivo);
+						lista.inserir(nodo);
+						anterior = nodo;
+						
+				    } else {
+				    	
+				    	No<String> nodo = new No<String>(linhaArquivo);
+				    	lista.inserir(nodo, anterior);
+				    	anterior = nodo;
+				    	
+				    }
+			    
+				}
+			}
+		}catch (Exception e) {
+			
+			clt.exibirMensagem("Erro: " + e.getMessage(), true);
+			
+		}
+	}
+	
+	public void insereValor(String nome, String telefone) throws IOException{
+		
+		// ListaEncadeada<String> lista = new ListaEncadeada<String>();		
+		Arquivo arquivo = new Arquivo();
+		
+		String linhaArquivo = nome + "|" + telefone + "|A";
+		No<String> anterior = null;	
+		if(lista.getHead().equals("")){
+			No<String> nodo = new No<String>(linhaArquivo);
+			lista.inserir(nodo);
+			anterior = nodo;
+			arquivo.gravar(linhaArquivo);
+		}else{
+			No<String> nodo = new No<String>(linhaArquivo);
+	    	lista.inserir(nodo,anterior);
+	    	anterior = nodo;
+	    	arquivo.gravar(linhaArquivo);
+		}
+
 	}
 	
 	/**
 	 * Trata o início da aplicação, fazendo chamada dos métodos que estão no ConListaTelefonica.
 	 */
 	public void iniciar() {
+		
+		try {
+			
+			this.inicializaLista();
+			
+		} catch(IOException e) {
+			
+			clt.exibirMensagem("Erro: " + e.getMessage(), true);
+			
+		}
 		
 		int operacao = 0;
 		boolean finalizar = true;
@@ -38,11 +127,24 @@ public class CtrPrograma {
 			
 			case 1:
 				
+				String nome = "";
+				String telefone = "";
+				
 				clt.exibirTituloOpcao("Incluir um contato telefônico");
 				clt.exibirMensagem("Informe o nome: ", false);
-				clt.capturarNome();
+				nome = clt.capturarNome();
 				clt.exibirMensagem("Informe o telefône: ", false);
-				clt.capturarNumeroTel();
+				telefone = clt.capturarNumeroTel();
+				
+				try {
+					
+					insereValor(nome, telefone);
+					
+				} catch(IOException e) {
+					
+					clt.exibirMensagem("Erro: " + e.getMessage(), true);
+					
+				}
 				
 				clt.exibirMensagem("Contato adicionado", true);
 				break;
@@ -50,7 +152,6 @@ public class CtrPrograma {
 			case 2:
 				
 				clt.exibirTituloOpcao("Excluir contato telefônico");
-				
 				clt.exibirMensagem("Informe o nome: ", false);
 				clt.capturarNome();
 				
@@ -63,6 +164,10 @@ public class CtrPrograma {
 				
 				clt.exibirMensagem("Informe o nome: ", false);
 				clt.capturarNome();
+				
+				// Imprimindo toda a lista.
+				clt.imprimirLista(lista.imprimir());
+				
 				break;
 				
 			case 0:

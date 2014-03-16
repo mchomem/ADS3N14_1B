@@ -15,21 +15,26 @@ public class No<T> {
 
 	/**
 	 * Construtor de classe.
-	 * @param i
+	 * 
+	 * @param dado
 	 */
-	public No(T i) {
-		dado = i;
+	public No(T dado) {
+		
+		this.dado = dado;
 		proximo = null;
 		anterior = null;
+		
 	}
 	
-	public void setData(T i) {
-		dado = i;
+	public void setDado(T dado) {
+		
+		this.dado = dado;
 		proximo = null;
 		anterior = null;
+		
 	}
 	
-	public T getData() {
+	public T getDado() {
 		return dado;
 	}
 

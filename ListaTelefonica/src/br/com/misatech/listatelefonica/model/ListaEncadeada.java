@@ -34,5 +34,37 @@ public class ListaEncadeada<T> {
 		}
 		
 	}
+	
+	public String imprimir() {
+		
+		No<T> elem = head;
+		String valores = "";
+		
+		do {
+			
+			valores += elem.getDado() + "\r\n";
+			elem = elem.getProximo();
+			
+		} while (elem != null);
+		
+		return valores; 
+		
+	}
+
+	public No<T> getHead() {
+		return head;
+	}
+
+	public void setHead(No<T> head) {
+		this.head = head;
+	}
+
+	public No<T> getTail() {
+		return tail;
+	}
+
+	public void setTail(No<T> tail) {
+		this.tail = tail;
+	}
 
 }

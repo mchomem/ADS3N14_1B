@@ -16,11 +16,18 @@ import java.io.PrintWriter;
 public class Arquivo {
 	
 	private final String CAMINHO_ARQUIVO = "Dados\\listaTelefonica.txt";
+	private FileReader arq;
+	private BufferedReader lerArq;
 	
 	/**
-	 * Construtor padrão da classe sem inicializações.
+	 * Construtor padrão da classe com inicializações.
 	 */
-	public Arquivo() {}
+	public Arquivo() throws HeadlessException, IOException {
+		
+		arq = new FileReader(CAMINHO_ARQUIVO);
+		lerArq = new BufferedReader(arq);
+		
+	}
 
 	/**
 	 * Grava um registro no arquivo texto.
@@ -48,20 +55,22 @@ public class Arquivo {
 	 * 
 	 * @throws IOException Disparado se caso houver falha de Entrada/Saída.
 	 */
-	public void consultar() throws HeadlessException, IOException {
+	public String consultar() throws HeadlessException, IOException {
 		
-		FileReader arq = new FileReader(CAMINHO_ARQUIVO);
-		BufferedReader lerArq = new BufferedReader(arq);
+		// FileReader arq = new FileReader(CAMINHO_ARQUIVO);
+		// BufferedReader lerArq = new BufferedReader(arq);
 		
-		String conteudo = "";
-		String linha = null;
+		// String conteudo = "";
+		String linha = lerArq.readLine();
 		
-		while( (linha = lerArq.readLine()) != null) {
+		/*while( (linha = lerArq.readLine()) != null) {
 		    conteudo +=  linha + "\r\n";
-		} 
+		} */
 		
-		System.out.println(conteudo);
-		arq.close();
+		// System.out.println(conteudo);
+		// arq.close();
+		
+		return linha;
 		
 	}
 	
