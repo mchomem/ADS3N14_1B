@@ -46,7 +46,7 @@ public class Arquivo {
 		System.out.println("Valor gravador com sucesso!");
 		
 	}
-
+	
 	/**
 	 * Consulta o arquivo texto.
 	 * 
@@ -57,19 +57,8 @@ public class Arquivo {
 	 */
 	public String consultar() throws HeadlessException, IOException {
 		
-		// FileReader arq = new FileReader(CAMINHO_ARQUIVO);
-		// BufferedReader lerArq = new BufferedReader(arq);
-		
-		// String conteudo = "";
 		String linha = lerArq.readLine();
-		
-		/*while( (linha = lerArq.readLine()) != null) {
-		    conteudo +=  linha + "\r\n";
-		} */
-		
-		// System.out.println(conteudo);
-		// arq.close();
-		
+	
 		return linha;
 		
 	}

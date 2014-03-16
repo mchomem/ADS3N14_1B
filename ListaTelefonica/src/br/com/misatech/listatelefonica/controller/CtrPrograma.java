@@ -19,7 +19,7 @@ public class CtrPrograma<T> {
 	
 	private ConListaTelefonica clt;
 	private ListaEncadeada<String> lista;
-	private No<String> novo;
+	private No<String> anterior = null;
 	
 	
 	/**
@@ -32,7 +32,6 @@ public class CtrPrograma<T> {
 		
 	}
 	
-	
 	/**
 	 * Inicializa lista conforme valores gravados no arquivo listaTelefonica.txt
 	 * 
@@ -43,17 +42,15 @@ public class CtrPrograma<T> {
 		
 		try {
 			
-			//ListaEncadeada<String> lista = new ListaEncadeada<String>();	
-			
 			Arquivo arquivo = new Arquivo();
-			No<String> anterior = null;
 			String linhaArquivo;
 			
 			while( (linhaArquivo = arquivo.consultar())!= null) {
 			
 				String[] valores = linhaArquivo.split("\\|");
 				
-				if(valores[2].equals("A")) {
+				// O registro está ativo? Se sim "S", considera para inserir na lista encadeada.
+				if(valores[2].equals("S")) {
 					
 					// A lista está vazia? Se sim, insere o 1º elemento.
 					if(lista.getHead() == null) {
@@ -81,21 +78,26 @@ public class CtrPrograma<T> {
 	
 	public void insereValor(String nome, String telefone) throws IOException{
 		
-		// ListaEncadeada<String> lista = new ListaEncadeada<String>();		
 		Arquivo arquivo = new Arquivo();
 		
-		String linhaArquivo = nome + "|" + telefone + "|A";
-		No<String> anterior = null;	
-		if(lista.getHead().equals("")){
+		// Grava o novo registro no arquivo utilizando a flag de cadastro ativo "S"
+		String linhaArquivo = nome + "|" + telefone + "|S";
+		
+		// A lista está vazia? se sim insere o 1º nó.
+		if(lista.getHead() == null) {
+			
 			No<String> nodo = new No<String>(linhaArquivo);
 			lista.inserir(nodo);
 			anterior = nodo;
 			arquivo.gravar(linhaArquivo);
-		}else{
+			
+		} else {
+			
 			No<String> nodo = new No<String>(linhaArquivo);
 	    	lista.inserir(nodo,anterior);
 	    	anterior = nodo;
 	    	arquivo.gravar(linhaArquivo);
+	    	
 		}
 
 	}
