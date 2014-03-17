@@ -20,6 +20,7 @@ public class CtrPrograma<T> {
 	private ConListaTelefonica clt;
 	private ListaEncadeada<String> lista;
 	private No<String> anterior = null;
+	private Arquivo arquivo;
 	
 	
 	/**
@@ -42,7 +43,7 @@ public class CtrPrograma<T> {
 		
 		try {
 			
-			Arquivo arquivo = new Arquivo();
+			arquivo = new Arquivo();
 			String linhaArquivo;
 			
 			while( (linhaArquivo = arquivo.consultar())!= null) {
@@ -85,7 +86,7 @@ public class CtrPrograma<T> {
 	 */
 	public void insereValor(String nome, String telefone) throws IOException{
 		
-		Arquivo arquivo = new Arquivo();
+		arquivo = new Arquivo();
 		
 		// Grava o novo registro no arquivo utilizando a flag de cadastro ativo "S"
 		String linhaArquivo = nome + "|" + telefone + "|S";
@@ -181,9 +182,21 @@ public class CtrPrograma<T> {
 				
 				clt.exibirTituloOpcao("Excluir contato telefônico");
 				clt.exibirMensagem("Informe o nome: ", false);
-				clt.capturarNome();
 				
-				clt.exibirMensagem("Contato excluido.", true);
+				try {
+					
+					if( arquivo.excluiItemLista(clt.capturarNome()) ) {
+						clt.exibirMensagem("Contato excluido.", true);
+					} else {
+						clt.exibirMensagem("Contato não localizado.", true);
+					}
+					
+				} catch (Exception e) {
+					
+					clt.exibirMensagem("Erro: " + e.getMessage(), true);
+					
+				}
+				
 				break;
 				
 			case 3:

@@ -63,4 +63,56 @@ public class Arquivo {
 		
 	}
 	
+	public boolean excluiItemLista(String nome) throws IOException {
+		
+		boolean contatoLocalizado = false;
+		
+		FileReader arq = new FileReader(CAMINHO_ARQUIVO);
+		BufferedReader lerArq = new BufferedReader(arq);
+		String linhaArquivo;
+		String conteudo = "";
+		
+		while( (linhaArquivo = lerArq.readLine())!= null) {
+
+			String[] valores = linhaArquivo.split("\\|");
+			
+			// O valor informado é igual ao do contato (ignorando caixa alta ou baixa)
+			if(valores[0].equalsIgnoreCase(nome)) {
+				// Atualiza a linha
+				conteudo += valores[0] + "|" + valores[1] + "|N,";
+				contatoLocalizado = true;
+				
+			} else {
+				conteudo += linhaArquivo + ",";
+			}
+			
+	    }
+		
+		arq.close();
+		
+		String[] conteudonovo = conteudo.split("\\,");
+		
+		// Inicializar o conteúdo do arquivo.
+		FileWriter zerarArquivo = new FileWriter(CAMINHO_ARQUIVO);
+		PrintWriter gravaArqBranco = new PrintWriter(zerarArquivo);
+		gravaArqBranco.print("");
+		zerarArquivo.close();
+		// Fim:  Inicializar o conteúdo do arquivo.
+		
+		// Itera sobre o arquivo, desta anexando todos os dados alterados!
+		FileWriter arqnovo = new FileWriter(CAMINHO_ARQUIVO, true);
+		PrintWriter gravaArq = new PrintWriter(arqnovo);
+		
+		for (int i = 0; i < conteudonovo.length; i++) {
+			
+			gravaArq.println(conteudonovo[i]);
+			
+		}
+		
+		arqnovo.close();
+		
+		return contatoLocalizado;
+		
+	}
+	
 }
