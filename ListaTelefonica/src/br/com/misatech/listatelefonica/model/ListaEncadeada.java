@@ -7,6 +7,7 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	
 	/**
 	 * Método de inserção do 1º nó.
+	 * 
 	 * @param novo o nó da lista.
 	 */
 	public void inserir(No<T> novo) {
@@ -25,8 +26,8 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	/**
 	 * Inserção de nó no final da lista.
 	 * 
-	 * @param novo
-	 * @param anterior
+	 * @param novo O nó propriamente dito.
+	 * @param anterior O nó anterior.
 	 */
 	public void inserir(No<T> novo, No<T> anterior) {
 		
@@ -41,12 +42,6 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		
 	}
 	
-	public void remover() {
-		
-		
-		
-	}
-	
 	/**
 	 * Faz a impressão dos valores de cada nó concatenandos com quebra de linha e retorno de carro.
 	 * 
@@ -54,7 +49,9 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	 */
 	public String imprimir() {
 		
+		// Inicializa com o 1º nó.
 		No<T> elem = head;
+		
 		String valores = "";
 		
 		do {
@@ -68,27 +65,23 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		
 	}
 	
-	public No<T> procurarNoPorValor(T valor) {
+	public No<T> procurarNoPorValorInicial(T valor) {
 		
 		No<T> nodo = head;
 		No<T> anterior = null;
-		No<T> proximo = null;
 		
 		while (nodo != null) {
 			
-			int cmp = nodo.getDado().compareTo(valor);
+			String letraInicial = String.valueOf( ((String) nodo.getDado()).charAt(0) ); 
+			
+			int cmp = letraInicial.compareTo((String) valor);
 			
 			if (cmp == 0) {
 				return nodo;
-			}
-			
-			if (cmp > 0) {
-				return anterior;
-			}
+			}			
 			
 			anterior = nodo;
 			nodo = nodo.getProximo();
-			proximo.setAnterior(anterior);
 			
 		}
 		

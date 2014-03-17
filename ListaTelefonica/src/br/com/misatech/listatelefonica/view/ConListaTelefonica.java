@@ -21,7 +21,8 @@ public class ConListaTelefonica {
 		
 		textoMenu += "1 - Incluir Contato.\n";
 		textoMenu += "2 - Excluir Contato.\n";
-		textoMenu += "3 - Consultar Contato.\n";
+		textoMenu += "3 - Relatório de Contato.\n";
+		textoMenu += "4 - Consultar Contato (Letra Inicial).\n";
 		textoMenu += "0 - Encerrar Aplicação.\n";
 		
 		System.out.println(textoMenu);
@@ -81,7 +82,7 @@ public class ConListaTelefonica {
 	/**
 	 * Método resposável por tratar os títulos de cada seção do console.
 	 * 
-	 * @param titulo
+	 * @param titulo String para o título da seção do console correspondente a operação.
 	 */
 	public void exibirTituloOpcao(String titulo) {
 		

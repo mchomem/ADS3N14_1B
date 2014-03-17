@@ -76,6 +76,13 @@ public class CtrPrograma<T> {
 		}
 	}
 	
+	/**
+	 * Insere o valor de um nó.
+	 * 
+	 * @param nome
+	 * @param telefone
+	 * @throws IOException
+	 */
 	public void insereValor(String nome, String telefone) throws IOException{
 		
 		Arquivo arquivo = new Arquivo();
@@ -103,6 +110,24 @@ public class CtrPrograma<T> {
 	}
 	
 	/**
+	 * Busca um contato apenas utilizando a inicial do nome.
+	 * 
+	 * @param inicial Uma única String representando a inicial do nome do contato.
+	 * @return O valor do registro. Caso não encontrado retorna mensagem: Não possível localizar contato.
+	 */
+	public String buscarIncial(String inicial) {
+		
+		No<String> no = lista.procurarNoPorValorInicial(inicial);
+		
+		if(no == null) {
+			return "Não possível localizar contato.";
+		} else {
+			return no.getDado();
+		}
+		
+	}
+	
+	/**
 	 * Trata o início da aplicação, fazendo chamada dos métodos que estão no ConListaTelefonica.
 	 */
 	public void iniciar() {
@@ -122,15 +147,16 @@ public class CtrPrograma<T> {
 		
 		do {
 			
+			String nome = "";
+			String telefone = "";
+			String inicial = "";
+			
 			clt.exibirMenu();
 			operacao = clt.capturarOperacao();
 			
 			switch(operacao) {
 			
 			case 1:
-				
-				String nome = "";
-				String telefone = "";
 				
 				clt.exibirTituloOpcao("Incluir um contato telefônico");
 				clt.exibirMensagem("Informe o nome: ", false);
@@ -162,13 +188,20 @@ public class CtrPrograma<T> {
 				
 			case 3:
 				
-				clt.exibirTituloOpcao("Consultar um contato telefônico");
-				
-				clt.exibirMensagem("Informe o nome: ", false);
-				clt.capturarNome();
-				
+				clt.exibirTituloOpcao("Relatório de contato telefônico");
+
 				// Imprimindo toda a lista.
 				clt.imprimirLista(lista.imprimir());
+				
+				break;
+				
+			case 4:
+				
+				clt.exibirTituloOpcao("Consultar contato pela letra inicial");
+				clt.exibirMensagem("Informe a letra inicial: ", false);
+				inicial = String.valueOf(clt.capturarNome().charAt(0));
+				
+				clt.imprimirLista(buscarIncial(inicial));
 				
 				break;
 				
