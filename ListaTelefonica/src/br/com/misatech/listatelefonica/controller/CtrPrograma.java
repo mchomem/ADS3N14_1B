@@ -237,7 +237,7 @@ public class CtrPrograma<T> {
 	public void finalizar() {
 		
 		clt.exibirTituloOpcao("Finalizando aplicação");
-		System.exit(1);
+		System.exit(0);
 		
 	}
 
