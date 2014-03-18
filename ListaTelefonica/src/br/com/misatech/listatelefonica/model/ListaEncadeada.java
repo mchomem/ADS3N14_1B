@@ -175,7 +175,7 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		return nodo;
 		
 	}
-
+	
 	public No<T> getHead() {
 		return head;
 	}

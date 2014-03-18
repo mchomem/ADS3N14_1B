@@ -242,9 +242,28 @@ public class CtrPrograma<T> {
 				
 				break;
 				
+			case 5:
+				
+				clt.exibirTituloOpcao("Avançar registro...");
+				clt.imprimirLista("");
+				
+				break;
+				
+			case 6:
+				
+				clt.exibirTituloOpcao("Retroceder registro...");
+				clt.imprimirLista("");
+				
+				break;
+				
 			case 0:
 				
 				finalizar = false;
+				break;
+				
+			default:
+				
+				clt.exibirMensagem("Opção inválida", true);
 				break;
 			
 			}

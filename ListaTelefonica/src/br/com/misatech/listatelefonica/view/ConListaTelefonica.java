@@ -23,6 +23,8 @@ public class ConListaTelefonica {
 		textoMenu += "2 - Excluir Contato.\n";
 		textoMenu += "3 - Relatório de Contato.\n";
 		textoMenu += "4 - Consultar Contato (Letra Inicial).\n";
+		textoMenu += "5 - Avançar registro.\n";
+		textoMenu += "6 - Retroceder registro.\n";
 		textoMenu += "0 - Encerrar Aplicação.\n";
 		
 		System.out.println(textoMenu);
