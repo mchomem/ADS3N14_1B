@@ -65,22 +65,38 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		
 	}
 	
+	/**
+	 * Procura pelo valor inicial do nome do contato no nó da lista.
+	 * 
+	 * @param valor String representando a letra inicial pela qual se quer buscar o contato.
+	 * @return Retorna o nó da lista. Caso no seja encontrado o valor, retorna null.
+	 */
 	public No<T> procurarNoPorValorInicial(T valor) {
 		
 		No<T> nodo = head;
-		No<T> anterior = null;
+		//No<T> anterior = null;
 		
 		while (nodo != null) {
 			
-			String letraInicial = String.valueOf( ((String) nodo.getDado()).charAt(0) ); 
+			// Atribui a letraInicial a primeira String do valor do nó iterado.
+			String letraInicial = String.valueOf( ((String) nodo.getDado()).charAt(0) );
+
+			// Os dados de cada coluna do nó.
+			String[] colunaNo = ((String) nodo.getDado()).split("\\|");
 			
+			// Compara as iniciais do valor (parâmetro) e do nó.
 			int cmp = letraInicial.compareTo((String) valor);
 			
-			if (cmp == 0) {
+			// Se as iniciais são iguais e se o nó não está excluido logicamente.
+			if (cmp == 0 && colunaNo[2].equals("S")) {
+
+				// Retorno o nó encontrado.
 				return nodo;
-			}			
+				
+			}
 			
-			anterior = nodo;
+			// anterior = nodo;
+			// Navega para o próximo nó.
 			nodo = nodo.getProximo();
 			
 		}

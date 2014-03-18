@@ -80,8 +80,8 @@ public class CtrPrograma<T> {
 	/**
 	 * Insere o valor de um nó.
 	 * 
-	 * @param nome
-	 * @param telefone
+	 * @param nome O nome do contato
+	 * @param telefone o número de telefone do contato.
 	 * @throws IOException
 	 */
 	public void insereValor(String nome, String telefone) throws IOException{
