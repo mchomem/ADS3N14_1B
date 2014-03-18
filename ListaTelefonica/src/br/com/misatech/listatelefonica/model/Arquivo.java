@@ -63,6 +63,13 @@ public class Arquivo {
 		
 	}
 	
+	/**
+	 * Faz a exclusão lógica do valor da lista.
+	 * 
+	 * @param nome O nome do contato telefônico.
+	 * @return
+	 * @throws IOException
+	 */
 	public boolean excluiItemLista(String nome) throws IOException {
 		
 		boolean contatoLocalizado = false;
@@ -77,8 +84,9 @@ public class Arquivo {
 			String[] valores = linhaArquivo.split("\\|");
 			
 			// O valor informado é igual ao do contato (ignorando caixa alta ou baixa)
-			if(valores[0].equalsIgnoreCase(nome)) {
-				// Atualiza a linha
+			if(valores[0].equals(nome)) {
+				
+				// Atualiza a linha com a flag N (de registro NÃO ativo)
 				conteudo += valores[0] + "|" + valores[1] + "|N,";
 				contatoLocalizado = true;
 				
@@ -93,11 +101,7 @@ public class Arquivo {
 		String[] conteudonovo = conteudo.split("\\,");
 		
 		// Inicializar o conteúdo do arquivo.
-		FileWriter zerarArquivo = new FileWriter(CAMINHO_ARQUIVO);
-		PrintWriter gravaArqBranco = new PrintWriter(zerarArquivo);
-		gravaArqBranco.print("");
-		zerarArquivo.close();
-		// Fim:  Inicializar o conteúdo do arquivo.
+		this.incializarArquivo();
 		
 		// Itera sobre o arquivo, desta anexando todos os dados alterados!
 		FileWriter arqnovo = new FileWriter(CAMINHO_ARQUIVO, true);
@@ -112,6 +116,20 @@ public class Arquivo {
 		arqnovo.close();
 		
 		return contatoLocalizado;
+		
+	}
+	
+	/**
+	 * Limpa todo o contéudo do arqiuvo de texto.
+	 * 
+	 * @throws IOException Se houver falha de I/O.
+	 */
+	private void incializarArquivo() throws IOException {
+		
+		FileWriter zerarArquivo = new FileWriter(CAMINHO_ARQUIVO);
+		PrintWriter gravaArqBranco = new PrintWriter(zerarArquivo);
+		gravaArqBranco.print("");
+		zerarArquivo.close();
 		
 	}
 	

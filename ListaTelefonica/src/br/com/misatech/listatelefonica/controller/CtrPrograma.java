@@ -21,7 +21,7 @@ public class CtrPrograma<T> {
 	private ListaEncadeada<String> lista;
 	private No<String> anterior = null;
 	private Arquivo arquivo;
-	
+	private No<T> no = null;
 	
 	/**
 	 * Construtor padrão inicializando os campos.
@@ -34,7 +34,17 @@ public class CtrPrograma<T> {
 	}
 	
 	/**
-	 * Inicializa lista conforme valores gravados no arquivo listaTelefonica.txt
+	 * Inicializa lista conforme valores gravados no arquivo listaTelefonica.txt<br>
+	 * O arquivo segue o leiaute com separador de valores como o pipe. Colunas:<br>
+	 * 
+	 * NOME DO CONTATO - String representando o nome<br>
+	 * NÚMERO DE TELEFONE - String representando o número de telefone<br>
+	 * REGISTRO_ATIVO - String de uma posição representando uma falg do estado do registro<br>
+	 * utilizando S para "sim" e N para "não"<br><br>
+	 * 
+	 * Ex:<br><br>
+	 * 
+	 * Misael|98882034|S
 	 * 
 	 * @throws HeadlessException
 	 * @throws IOException
@@ -70,7 +80,8 @@ public class CtrPrograma<T> {
 			    
 				}
 			}
-		}catch (Exception e) {
+			
+		} catch (Exception e) {
 			
 			clt.exibirMensagem("Erro: " + e.getMessage(), true);
 			
@@ -84,7 +95,7 @@ public class CtrPrograma<T> {
 	 * @param telefone o número de telefone do contato.
 	 * @throws IOException
 	 */
-	public void insereValor(String nome, String telefone) throws IOException{
+	public void insereValor(String nome, String telefone) throws IOException {
 		
 		arquivo = new Arquivo();
 		
@@ -182,22 +193,35 @@ public class CtrPrograma<T> {
 				
 				clt.exibirTituloOpcao("Excluir contato telefônico");
 				clt.exibirMensagem("Informe o nome: ", false);
+				String capturarNome = clt.capturarNome();
 				
 				try {
 					
-					if( arquivo.excluiItemLista(clt.capturarNome()) ) {
-						clt.exibirMensagem("Contato excluido.", true);
-					} else {
-						clt.exibirMensagem("Contato não localizado.", true);
+					lista.excluir(capturarNome);
+					
+					try {
+						
+						if(arquivo.excluiItemLista(capturarNome)) {
+							
+							clt.exibirMensagem("Contato excluido.", true);
+							
+						} else {
+							
+							clt.exibirMensagem("Contato não localizado.", true);
+							
+						}
+						
+					} catch (Exception e) {
+						
+						clt.exibirMensagem("Erro: " + e.getMessage(), true);
+						
 					}
 					
 				} catch (Exception e) {
 					
 					clt.exibirMensagem("Erro: " + e.getMessage(), true);
-					
 				}
 				
-				break;
 				
 			case 3:
 				

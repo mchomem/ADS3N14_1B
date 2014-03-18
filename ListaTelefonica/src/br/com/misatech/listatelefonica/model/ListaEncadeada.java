@@ -42,6 +42,77 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		
 	}
 	
+	
+	/**
+	 * Exclui o nó de uma lista encadeada.
+	 * 
+	 * @param valor O valor do nó a ser excluido.
+	 */
+	public void excluir(T valor) {
+		
+		No<T> nodo = head;
+		No<T> anterior = null;
+		No<T> proximo = null;
+		No<T> aux = null; 
+		boolean encontrou = false;
+		
+		// Percorre a lista procurando o nodo que devera ser excluido
+		while (nodo != null) {
+			
+			String[] valores = nodo.getDado().toString().split("\\|");
+			
+			if(valores[0].equals(valor)) {
+		        
+				encontrou = true;
+				
+				if(nodo.getAnterior() == null) {
+					
+					//se o nodo a excluir for o head
+					proximo = nodo.getProximo();
+					
+				} else if(nodo.getProximo() == null) {
+					
+					//se o nodo a excluir for o tail
+					anterior = nodo.getAnterior();
+				} else {
+					//se o nodo a excluir for do meio
+					proximo = nodo.getProximo();
+					anterior = nodo.getAnterior();
+				}
+				
+				break;
+			}
+			
+			anterior = nodo;
+			nodo = nodo.getProximo();
+		}
+		
+		if(encontrou) {
+			
+			if(nodo.getAnterior() == null) {
+				
+				//se o nodo a excluir for o head
+				proximo.setAnterior(nodo.getAnterior());
+				head = proximo;
+				
+			} else if(nodo.getProximo() == null) {
+				
+				//se o nodo a excluir for o tail
+				anterior.setProximo(nodo.getProximo());
+				tail = anterior;
+				
+			} else {
+				
+				//se o nodo a excluir for do meio
+				aux = nodo.getAnterior();
+				anterior.setProximo(nodo.getProximo());
+				proximo.setAnterior(aux);
+				
+			}
+			
+		}
+	}
+	
 	/**
 	 * Faz a impressão dos valores de cada nó concatenandos com quebra de linha e retorno de carro.
 	 * 
