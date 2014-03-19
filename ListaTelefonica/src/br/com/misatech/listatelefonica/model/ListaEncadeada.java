@@ -1,5 +1,13 @@
 package br.com.misatech.listatelefonica.model;
 
+/**
+ * Classe representando a lista encadeada.
+ * 
+ * @author Misael C. Homem
+ * @since 1.00
+ *
+ * @param <T>
+ */
 public class ListaEncadeada<T extends Comparable<T>> {
 	
 	protected No<T> head;
@@ -174,6 +182,25 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		
 		return nodo;
 		
+	}
+	
+	public No<T> avancarNo(No<T> no) {
+		
+		// Implementação interrompida.
+		if(no == null) {
+			
+			return head;
+			
+		} else {
+			
+			return no = no.getProximo();
+			
+		}
+		
+	}
+	
+	public void retrocederNo() {
+		// Não implementado.
 	}
 	
 	public No<T> getHead() {

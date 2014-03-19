@@ -21,7 +21,6 @@ public class CtrPrograma<T> {
 	private ListaEncadeada<String> lista;
 	private No<String> anterior = null;
 	private Arquivo arquivo;
-	private No<T> no = null;
 	
 	/**
 	 * Construtor padrão inicializando os campos.
@@ -245,6 +244,9 @@ public class CtrPrograma<T> {
 			case 5:
 				
 				clt.exibirTituloOpcao("Avançar registro...");
+				
+				
+				
 				clt.imprimirLista("");
 				
 				break;
@@ -252,6 +254,9 @@ public class CtrPrograma<T> {
 			case 6:
 				
 				clt.exibirTituloOpcao("Retroceder registro...");
+				
+				
+				
 				clt.imprimirLista("");
 				
 				break;
