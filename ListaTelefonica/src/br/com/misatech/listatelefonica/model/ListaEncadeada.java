@@ -10,8 +10,8 @@ package br.com.misatech.listatelefonica.model;
  */
 public class ListaEncadeada<T extends Comparable<T>> {
 	
-	protected No<T> head;
-	protected No<T> tail;
+	protected No<T> head = null;
+	protected No<T> tail = null;
 	
 	/**
 	 * Método de inserção do 1º nó.

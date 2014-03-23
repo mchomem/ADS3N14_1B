@@ -17,10 +17,10 @@ import br.com.misatech.listatelefonica.view.ConListaTelefonica;
  */
 public class CtrPrograma<T> {
 	
-	private ConListaTelefonica clt;
-	private ListaEncadeada<String> lista;
+	private ConListaTelefonica clt = null;
+	private ListaEncadeada<String> lista = null;
 	private No<String> anterior = null;
-	private Arquivo arquivo;
+	private Arquivo arquivo = null;
 	
 	/**
 	 * Construtor padrão inicializando os campos.
@@ -131,9 +131,13 @@ public class CtrPrograma<T> {
 		No<String> no = lista.procurarNoPorValorInicial(inicial);
 		
 		if(no == null) {
+			
 			return "Não possível localizar contato.";
+			
 		} else {
+			
 			return no.getDado();
+			
 		}
 		
 	}
