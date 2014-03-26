@@ -258,7 +258,8 @@ public class CtrPrograma<T> {
 				clt.exibirTituloOpcao("Consultar contato");
 				clt.exibirMensagem("Informe o nome do contato: ", false);
 				String valorBusca = clt.capturarNome();
-				clt.imprimirLista(lista.buscaSequencial(valorBusca).equals("") ? "Valor não encontrado.": lista.buscaSequencial(valorBusca));
+				String resultado = lista.buscaSequencial(valorBusca);
+				clt.imprimirLista(resultado.equals("") ? "Valor não encontrado.": resultado);
 				
 				break;
 				
