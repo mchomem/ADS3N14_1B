@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import br.com.misatech.listatelefonica.model.Arquivo;
 import br.com.misatech.listatelefonica.model.ListaEncadeada;
+import br.com.misatech.listatelefonica.model.ListaOrdenada;
 import br.com.misatech.listatelefonica.model.No;
 import br.com.misatech.listatelefonica.view.ConListaTelefonica;
 
@@ -17,18 +18,19 @@ import br.com.misatech.listatelefonica.view.ConListaTelefonica;
  */
 public class CtrPrograma<T> {
 	
-	private ConListaTelefonica clt = null;
-	private ListaEncadeada<String> lista = null;
-	private No<String> anterior = null;
-	private Arquivo arquivo = null;
+	private ConListaTelefonica clt;
+	private ListaEncadeada<String> lista;
+	private No<String> anterior;
+	private Arquivo arquivo;
 	
 	/**
 	 * Construtor padrão inicializando os campos.
 	 */
 	public CtrPrograma() {
 		
-		clt = new ConListaTelefonica();
+		clt   = new ConListaTelefonica();
 		lista = new ListaEncadeada<String>();
+		
 		
 	}
 	
@@ -142,6 +144,23 @@ public class CtrPrograma<T> {
 		
 	}
 	
+	public String buscarContatoPesquisaBinaria(String nome) {
+		
+		String valor = lista.buscaBinaria(nome);
+		
+		
+		if(valor.equals("")) {
+			
+			return "Não foi possível localizar o contato";
+			
+		}
+				
+		return valor;
+		
+		
+	}
+	
+	
 	/**
 	 * Trata o início da aplicação, fazendo chamada dos métodos que estão no ConListaTelefonica.
 	 */
@@ -157,14 +176,10 @@ public class CtrPrograma<T> {
 			
 		}
 		
-		int operacao = 0;
+		int operacao      = 0;
 		boolean finalizar = true;
 		
 		do {
-			
-			String nome = "";
-			String telefone = "";
-			String inicial = "";
 			
 			clt.exibirMenu();
 			operacao = clt.capturarOperacao();
@@ -172,6 +187,9 @@ public class CtrPrograma<T> {
 			switch(operacao) {
 			
 			case 1:
+				
+				String nome     = "";
+				String telefone = "";
 				
 				clt.exibirTituloOpcao("Incluir um contato telefônico");
 				clt.exibirMensagem("Informe o nome: ", false);
@@ -237,6 +255,16 @@ public class CtrPrograma<T> {
 				
 			case 4:
 				
+				clt.exibirTituloOpcao("Consultar contato");
+				clt.exibirMensagem("Informe o nome do contato: ", false);
+				String valorBusca = clt.capturarNome();
+				clt.imprimirLista(lista.buscaSequencial(valorBusca).equals("") ? "Valor não encontrado.": lista.buscaSequencial(valorBusca));
+				
+				break;
+				
+			case 5:
+				
+				String inicial  = "";
 				clt.exibirTituloOpcao("Consultar contato pela letra inicial");
 				clt.exibirMensagem("Informe a letra inicial: ", false);
 				inicial = String.valueOf(clt.capturarNome().charAt(0));
@@ -245,23 +273,27 @@ public class CtrPrograma<T> {
 				
 				break;
 				
-			case 5:
+			case 6:
 				
 				clt.exibirTituloOpcao("Avançar registro...");
-				
-				
-				
 				clt.imprimirLista("");
 				
 				break;
 				
-			case 6:
+			case 7:
 				
 				clt.exibirTituloOpcao("Retroceder registro...");
-				
-				
-				
 				clt.imprimirLista("");
+				
+				break;
+				
+			case 8:
+				
+				clt.exibirMensagem("Informe o nome do contato: ", false);
+				clt.imprimirLista(this.buscarContatoPesquisaBinaria(clt.capturarNome()));
+				break;
+				
+			case 9:
 				
 				break;
 				
@@ -288,7 +320,7 @@ public class CtrPrograma<T> {
 	 */
 	public void finalizar() {
 		
-		clt.exibirTituloOpcao("Finalizando aplicação");
+		clt.exibirTituloOpcao("Aplicação encerrada");
 		System.exit(0);
 		
 	}

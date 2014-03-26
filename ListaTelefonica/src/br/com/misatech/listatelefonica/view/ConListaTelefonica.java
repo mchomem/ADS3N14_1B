@@ -22,9 +22,12 @@ public class ConListaTelefonica {
 		textoMenu += "1 - Incluir Contato.\n";
 		textoMenu += "2 - Excluir Contato.\n";
 		textoMenu += "3 - Relatório de Contato.\n";
-		textoMenu += "4 - Consultar Contato (Letra Inicial).\n";
-		textoMenu += "5 - Avançar registro.\n";
-		textoMenu += "6 - Retroceder registro.\n";
+		textoMenu += "4 - Consultar Contato.\n";
+		textoMenu += "5 - Consultar Contato (Letra Inicial).\n";
+		textoMenu += "6 - Avançar registro.\n";
+		textoMenu += "7 - Retroceder registro.\n";
+		textoMenu += "8 - Consultar Contato (Busca binária).\n";
+		textoMenu += "9 - Pesquisa Sequência x Pesquisa Binária .\n";
 		textoMenu += "0 - Encerrar Aplicação.\n";
 		
 		System.out.println(textoMenu);
@@ -76,7 +79,7 @@ public class ConListaTelefonica {
 		@SuppressWarnings("resource")
 		Scanner leitura = new Scanner(System.in);
 		tel = leitura.next();
-				
+		
 		return tel;
 		
 	}

@@ -1,5 +1,7 @@
 package br.com.misatech.listatelefonica.model;
 
+import java.util.Arrays;
+
 /**
  * Classe representando a lista encadeada.
  * 
@@ -10,8 +12,9 @@ package br.com.misatech.listatelefonica.model;
  */
 public class ListaEncadeada<T extends Comparable<T>> {
 	
-	protected No<T> head = null;
-	protected No<T> tail = null;
+	protected No<T> head;
+	protected No<T> tail;
+	private String[] listaOrdenada;
 	
 	/**
 	 * Método de inserção do 1º nó.
@@ -152,16 +155,16 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	 */
 	public No<T> procurarNoPorValorInicial(T valor) {
 		
-		No<T> nodo = head;
+		No<T> no = head;
 		//No<T> anterior = null;
 		
-		while (nodo != null) {
+		while (no != null) {
 			
 			// Atribui a letraInicial a primeira String do valor do nó iterado.
-			String letraInicial = String.valueOf( ((String) nodo.getDado()).charAt(0) );
+			String letraInicial = String.valueOf( ((String) no.getDado()).charAt(0) );
 
 			// Os dados de cada coluna do nó.
-			String[] colunaNo = ((String) nodo.getDado()).split("\\|");
+			String[] colunaNo = ((String) no.getDado()).split("\\|");
 			
 			// Compara as iniciais do valor (parâmetro) e do nó.
 			int cmp = letraInicial.compareTo((String) valor);
@@ -170,18 +173,39 @@ public class ListaEncadeada<T extends Comparable<T>> {
 			if (cmp == 0 && colunaNo[2].equals("S")) {
 
 				// Retorno o nó encontrado.
-				return nodo;
+				return no;
 				
 			}
 			
 			// anterior = nodo;
 			// Navega para o próximo nó.
-			nodo = nodo.getProximo();
+			no = no.getProximo();
 			
 		}
 		
-		return nodo;
+		return no;
 		
+	}
+	
+	public String buscaSequencial(T valor) {
+		
+		No<T> no = head;
+		
+		while(no != null) {
+			
+			String[] colunaNo = ((String) no.getDado()).split("\\|");
+			
+			if(colunaNo[0].equals(valor)) {
+				
+				return no.getDado().toString();
+				
+			}
+			
+			no = no.getProximo();
+			
+		}
+		
+		return "";
 	}
 	
 	public No<T> avancarNo(No<T> no) {
@@ -203,6 +227,76 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		// Não implementado.
 	}
 	
+	private void odernarLista() {
+		
+		No<T> no = head;
+		listaOrdenada = new String[this.contarNo()];
+		
+		for(int idx = 0; no != null; idx++) {
+			
+			listaOrdenada[idx] = no.getDado().toString();
+			no = no.getProximo();
+			
+		}
+		
+		Arrays.sort(listaOrdenada);
+		
+	}
+	
+	public String buscaBinaria(String chave) {
+		
+		this.odernarLista();
+	    return buscaBinariaRecursiva(listaOrdenada, 0, listaOrdenada.length - 1, chave);
+	    
+	 }
+
+	private String buscaBinariaRecursiva(String[] array, int primeiroIndice, int ultimoIndice, String nome) {
+	
+	    int indiceMeio = (primeiroIndice + ultimoIndice) / 2;
+	    String[] nomeDoIndice = array[indiceMeio].split("\\|");
+	     
+	    if (primeiroIndice > ultimoIndice) {
+	        
+	    	return "";
+	    
+	    } else if(nomeDoIndice[0].toString().compareTo(nome) == 0) {
+	    	
+	        return array[indiceMeio];
+	    
+	    } else if (nomeDoIndice[0].toString().compareTo(nome) < 0) {
+		   
+	    	return buscaBinariaRecursiva(array, indiceMeio + 1, ultimoIndice, nome);
+	    
+	    } else {
+	    	
+	    	return buscaBinariaRecursiva(array, primeiroIndice, indiceMeio - 1, nome);
+	        
+	    }
+	    
+	}
+	
+	/**
+	 * Faz a contagem de nós contidos em uma lista.
+	 * @return
+	 */
+	public int contarNo() {
+		
+		// Inicia o nó com o 1º da lista.
+		No<T> no = head;
+		int qt = 0;
+		
+		while(no != null) {
+			
+			no = no.getProximo();
+			qt++;
+			
+		}
+		
+		return qt;
+		
+	}
+		
+	/* Getters e Setters */
 	public No<T> getHead() {
 		return head;
 	}
@@ -218,5 +312,6 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	public void setTail(No<T> tail) {
 		this.tail = tail;
 	}
+	/* Getters e Setters */
 
 }

@@ -1,5 +1,5 @@
-Misael|33443344|N
-Angelica|99229922|N
+Misael|33443344|S
+Angelica|99229922|S
 João|32144568|S
 José|95184568|S
 Maria|85216548|S
