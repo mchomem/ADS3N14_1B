@@ -15,6 +15,8 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	protected No<T> head;
 	protected No<T> tail;
 	private String[] listaOrdenada;
+	private long contBuscaSeq;
+	private long contBuscaBin;
 	
 	/**
 	 * Método de inserção do 1º nó.
@@ -153,7 +155,7 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	 * @param valor String representando a letra inicial pela qual se quer buscar o contato.
 	 * @return Retorna o nó da lista. Caso no seja encontrado o valor, retorna null.
 	 */
-	public No<T> procurarNoPorValorInicial(T valor) {
+	public No<T> buscarValorInicial(T valor) {
 		
 		No<T> no = head;
 		//No<T> anterior = null;
@@ -187,7 +189,7 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		
 	}
 	
-	public String buscaSequencial(T valor) {
+	public String buscaSequencial(String valor) {
 		
 		No<T> no = head;
 		

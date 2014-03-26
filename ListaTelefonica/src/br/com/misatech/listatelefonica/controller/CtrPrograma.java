@@ -130,7 +130,7 @@ public class CtrPrograma<T> {
 	 */
 	public String buscarIncial(String inicial) {
 		
-		No<String> no = lista.procurarNoPorValorInicial(inicial);
+		No<String> no = lista.buscarValorInicial(inicial);
 		
 		if(no == null) {
 			
@@ -247,7 +247,6 @@ public class CtrPrograma<T> {
 			case 3:
 				
 				clt.exibirTituloOpcao("Relatório de contato telefônico");
-
 				// Imprimindo toda a lista.
 				clt.imprimirLista(lista.imprimir());
 				
@@ -269,7 +268,6 @@ public class CtrPrograma<T> {
 				clt.exibirTituloOpcao("Consultar contato pela letra inicial");
 				clt.exibirMensagem("Informe a letra inicial: ", false);
 				inicial = String.valueOf(clt.capturarNome().charAt(0));
-				
 				clt.imprimirLista(buscarIncial(inicial));
 				
 				break;
@@ -295,6 +293,11 @@ public class CtrPrograma<T> {
 				break;
 				
 			case 9:
+				
+				clt.exibirTituloOpcao("Pesquisa Binária x Pesquisa Sequêncial");
+				String n = clt.capturarNome();
+				
+				
 				
 				break;
 				
