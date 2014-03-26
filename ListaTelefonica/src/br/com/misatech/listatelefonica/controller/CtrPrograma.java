@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import br.com.misatech.listatelefonica.model.Arquivo;
 import br.com.misatech.listatelefonica.model.ListaEncadeada;
-import br.com.misatech.listatelefonica.model.ListaOrdenada;
 import br.com.misatech.listatelefonica.model.No;
 import br.com.misatech.listatelefonica.view.ConListaTelefonica;
 
