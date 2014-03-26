@@ -295,9 +295,18 @@ public class CtrPrograma<T> {
 			case 9:
 				
 				clt.exibirTituloOpcao("Pesquisa Binária x Pesquisa Sequêncial");
+				clt.exibirMensagem("Informe o valor para busca: ", false);
 				String n = clt.capturarNome();
 				
+				lista.buscaSequencial(n);
+				lista.buscaBinaria(n);
 				
+				clt.exibirMensagem("Resultado final:", true);
+				clt.exibirMensagem("Quantidade de iterações para realização da busca:", true);
+				clt.exibirMensagem("Pesquisa sequêncial: " + lista.getContBuscaSeq()  , true);
+				clt.exibirMensagem("Pesquisa binária: " + lista.getContBuscaBin()     , true);
+				lista.setContBuscaSeq(0);
+				lista.setContBuscaSeq(0);
 				
 				break;
 				

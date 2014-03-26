@@ -12,11 +12,11 @@ import java.util.Arrays;
  */
 public class ListaEncadeada<T extends Comparable<T>> {
 	
-	protected No<T> head;
-	protected No<T> tail;
+	protected No<T>  head;
+	protected No<T>  tail;
 	private String[] listaOrdenada;
-	private long contBuscaSeq;
-	private long contBuscaBin;
+	private long     contBuscaSeq;
+	private long     contBuscaBin;
 	
 	/**
 	 * Método de inserção do 1º nó.
@@ -158,7 +158,6 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	public No<T> buscarValorInicial(T valor) {
 		
 		No<T> no = head;
-		//No<T> anterior = null;
 		
 		while (no != null) {
 			
@@ -179,7 +178,6 @@ public class ListaEncadeada<T extends Comparable<T>> {
 				
 			}
 			
-			// anterior = nodo;
 			// Navega para o próximo nó.
 			no = no.getProximo();
 			
@@ -194,6 +192,8 @@ public class ListaEncadeada<T extends Comparable<T>> {
 		No<T> no = head;
 		
 		while(no != null) {
+			
+			contBuscaSeq++;
 			
 			String[] colunaNo = ((String) no.getDado()).split("\\|");
 			
@@ -254,6 +254,8 @@ public class ListaEncadeada<T extends Comparable<T>> {
 
 	private String buscaBinariaRecursiva(String[] array, int primeiroIndice, int ultimoIndice, String nome) {
 	
+		contBuscaBin++;
+		
 	    int indiceMeio = (primeiroIndice + ultimoIndice) / 2;
 	    String[] nomeDoIndice = array[indiceMeio].split("\\|");
 	     
@@ -314,6 +316,21 @@ public class ListaEncadeada<T extends Comparable<T>> {
 	public void setTail(No<T> tail) {
 		this.tail = tail;
 	}
+	
+	public long getContBuscaSeq() {
+		return contBuscaSeq;
+	}
+	
+	public void setContBuscaSeq(long contBuscaSeq) {
+		this.contBuscaSeq = contBuscaSeq;
+	}
+	
+	public long getContBuscaBin() {
+		return contBuscaBin;
+	}
+	
+	public void setContBuscaBin(long contBuscaBin) {
+		this.contBuscaBin = contBuscaBin;
+	}
 	/* Getters e Setters */
-
 }
