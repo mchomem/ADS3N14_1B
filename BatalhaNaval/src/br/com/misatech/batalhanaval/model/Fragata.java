@@ -1,11 +1,21 @@
 package br.com.misatech.batalhanaval.model;
 
+/**
+ * Representa a Fragata.
+ * 
+ * @author Misael C. Homem
+ * @since 1.00
+ *
+ */
 public class Fragata extends Navio {
 
 	private String posPart1;
 	private String posPart2;
 	private String posPart3;
 	
+	/**
+	 * Construtor padrão.
+	 */
 	public Fragata() {
 		
 		super(3);

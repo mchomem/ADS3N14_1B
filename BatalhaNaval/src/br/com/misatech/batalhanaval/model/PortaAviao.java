@@ -1,5 +1,12 @@
 package br.com.misatech.batalhanaval.model;
 
+/**
+ * Representa o Porta Aviões.
+ * 
+ * @author Misael C. Homem
+ * @since 1.00
+ *
+ */
 public class PortaAviao extends Navio {
 	
 	private String posPart1;
@@ -8,6 +15,9 @@ public class PortaAviao extends Navio {
 	private String posPart4;
 	private String posPart5;
 
+	/**
+	 * Construtor padrão.
+	 */
 	public PortaAviao() {
 		
 		super(5);

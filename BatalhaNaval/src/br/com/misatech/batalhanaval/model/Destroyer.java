@@ -1,5 +1,12 @@
 package br.com.misatech.batalhanaval.model;
 
+/**
+ * Representa o Destroyer.
+ * 
+ * @author Misael C. Homem
+ * @since 1.00
+ *
+ */
 public class Destroyer extends Navio {
 	
 	private String posPart1;
@@ -7,6 +14,9 @@ public class Destroyer extends Navio {
 	private String posPart3;
 	private String posPart4;
 	
+	/**
+	 * Construtor padrão.
+	 */
 	public Destroyer() {
 		
 		super(4);

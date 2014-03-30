@@ -1,10 +1,20 @@
 package br.com.misatech.batalhanaval.model;
 
+/**
+ * Representa o Torpedeiro.
+ * 
+ * @author Misael C. Homem
+ * @since 1.00
+ *
+ */
 public class Torpedeiro extends Navio {
 
 	private String posPart1;
 	private String posPart2;
 	
+	/**
+	 * Construtor padrão.
+	 */
 	public Torpedeiro() {
 		
 		super(2);
