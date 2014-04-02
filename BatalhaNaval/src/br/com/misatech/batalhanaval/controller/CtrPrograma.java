@@ -140,7 +140,7 @@ public class CtrPrograma {
 				
 			}
 
-			// Validar os dados de coordenada.
+			// Validar o dado da 1º parte da coordenada.
 			if(!coordLinha.equals("0") &&
 				!coordLinha.equals("1") &&
 				!coordLinha.equals("2") &&
@@ -150,8 +150,15 @@ public class CtrPrograma {
 				!coordLinha.equals("6") &&
 				!coordLinha.equals("7") &&
 				!coordLinha.equals("8") &&
-				!coordLinha.equals("9") &&
-				!coordColuna.equals("A") &&
+				!coordLinha.equals("9")) {
+				
+				console.imprimir("Valor inválido para coordenada.");
+				continue;
+				
+			}
+				
+			// Validar o dado da 2º parte da coordenada.
+			if(!coordColuna.equals("A") &&
 				!coordColuna.equals("B") &&
 				!coordColuna.equals("C") &&
 				!coordColuna.equals("D") &&
@@ -162,14 +169,13 @@ public class CtrPrograma {
 				!coordColuna.equals("I") &&
 				!coordColuna.equals("J")) {
 				
-				console.imprimir("\nValor inválido para coordenada.\n");
+				console.imprimir("Valor inválido para coordenada.");
 				continue;
 				
 			}
 			
 			// Se está tudo OK com a coordenada, prossegue a aplicação, sai do laço.
 			break;
-			
 
 		} while(true);
 		
@@ -182,7 +188,7 @@ public class CtrPrograma {
 		   tabuleiro.getPortaAviao().getPosPart3().equals("") ||
 		   tabuleiro.getPortaAviao().getPosPart4().equals("") ||
 		   tabuleiro.getPortaAviao().getPosPart5().equals("")) {
-			
+			 
 			placar.setPontuacao(placar.getPontuacao() + 3);
 			infoTorpedo = "Porta aviões atingido";
 			
