@@ -44,8 +44,8 @@ public class CtrPrograma {
 			console.imprimir(tabuleiro.imprimir());
 			console.imprimir("Placar: " + placar.getPontuacao() + " pontos\n");
 			console.imprimir("*** Menu ***\n");
-			console.imprimir("1 - Reiniciar partida.");
-			console.imprimir("2 - Disparar torpedo.");
+			console.imprimir("1 - Disparar torpedo.");
+			console.imprimir("2 - Reiniciar partida.");
 			console.imprimir("0 - Abandonar partirda.");
 			opcao = console.cursor("Opção");
 			
@@ -53,14 +53,14 @@ public class CtrPrograma {
 			
 			case "1":
 				
-				tabuleiro.iniciar();
-				placar.setPontuacao(15);
-				
+				this.executarTurno();
 				break;
 			
 			case "2":
 				
-				this.executarTurno();
+				tabuleiro.iniciar();
+				placar.setPontuacao(15);
+				
 				break;
 				
 			case "3":
