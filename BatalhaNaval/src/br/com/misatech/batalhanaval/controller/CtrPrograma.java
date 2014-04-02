@@ -59,6 +59,7 @@ public class CtrPrograma {
 			case "2":
 				
 				tabuleiro.iniciar();
+				tabuleiro.inicializaCoordenadasUtilizadas();
 				placar.setPontuacao(15);
 				
 				break;
@@ -114,9 +115,12 @@ public class CtrPrograma {
 			
 			coordenada = console.cursor("Escolha a coordenada onde linha [0-9] e coluna [A-J]");
 			
-			// O tamanho da String deve ser de dois caracteres.
+			// Consistência: o tamanho da String deve ser de dois caracteres.
 			if(coordenada.length() != 2) {
+				
+				console.imprimir("Valor inválido para coordenada.");
 				continue;
+				
 			}
 			
 			// Obter a 1º parte da coordenada.
@@ -124,12 +128,20 @@ public class CtrPrograma {
 			
 			// Obter a 2º parte da coordenada tratando o valor para CAIXA ALTA (para reduzir número de testes)			
 			coordColuna = String.valueOf(coordenada.charAt(1)).toUpperCase();
-			
+
 			// Devolvovemos a coordenda com o 2º informação tratada.
 			coordenada = coordLinha + coordColuna;
 			
+			// Consistência: A coordenada já foi utilizada?
+			if(tabuleiro.verificarCoordenadaUtilizada(coordenada)) {
+				
+				console.imprimir("A coordenada " + coordenada + " já foi utilizada por favor escolha outra.");
+				continue;
+				
+			}
+
 			// Validar os dados de coordenada.
-		} while(!coordLinha.equals("0") &&
+			if(!coordLinha.equals("0") &&
 				!coordLinha.equals("1") &&
 				!coordLinha.equals("2") &&
 				!coordLinha.equals("3") &&
@@ -148,9 +160,20 @@ public class CtrPrograma {
 				!coordColuna.equals("G") &&
 				!coordColuna.equals("H") &&
 				!coordColuna.equals("I") &&
-				!coordColuna.equals("J"));
+				!coordColuna.equals("J")) {
+				
+				console.imprimir("\nValor inválido para coordenada.\n");
+				continue;
+				
+			}
+			
+			// Se está tudo OK com a coordenada, prossegue a aplicação, sai do laço.
+			break;
+			
+
+		} while(true);
 		
-		// Enviar as coordenadas para o tabuleiro.
+		// Envia as coordenadas escolhidas pelo jogador para o tabuleiro.
 		tabuleiro.receberCoordenadaNavio(coordenada);
 		
 		// Se qualquer parte do Porta Aviões foi atingida.

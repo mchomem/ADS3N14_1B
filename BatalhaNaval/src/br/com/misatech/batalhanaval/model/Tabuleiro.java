@@ -1,5 +1,8 @@
 package br.com.misatech.batalhanaval.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Representação do tabuleiro da batalha naval utilizando uma matriz de Strings 10 x 10..
  * 
@@ -9,24 +12,26 @@ package br.com.misatech.batalhanaval.model;
  */
 public class Tabuleiro {
 	
-	private String[][]  tabCoord;
-	private PortaAviao  portaAviao;
-	private Destroyer   destroyer;
-	private Fragata     fragata;
-	private Torpedeiro  torpedeiro;
-	private Submarino   submarino;
+	private String[][]   tabCoord;
+	private PortaAviao   portaAviao;
+	private Destroyer    destroyer;
+	private Fragata      fragata;
+	private Torpedeiro   torpedeiro;
+	private Submarino    submarino;
+	private List<String> coordenadaUtilizada; 
 	
 	/**
 	 * Construtor padrão.
 	 */
 	public Tabuleiro() {
 		
-		tabCoord   = new String[10][10];
-		portaAviao = new PortaAviao();
-		destroyer  = new Destroyer();
-		fragata    = new Fragata();
-		torpedeiro = new Torpedeiro();
-		submarino  = new Submarino();
+		tabCoord            = new String[10][10];
+		portaAviao          = new PortaAviao();
+		destroyer           = new Destroyer();
+		fragata             = new Fragata();
+		torpedeiro          = new Torpedeiro();
+		submarino           = new Submarino();
+		coordenadaUtilizada = new ArrayList<String>();
 		
 	}
 	
@@ -73,11 +78,79 @@ public class Tabuleiro {
 		
 	}
 	
+	
+	/**
+	 * Verifica se a coordenada já foi utilizada.
+	 * 
+	 * @param coordenada A coordenada informada pelo jogador.
+	 * @return Retorna true se a coordenada já foi utilizada e false se ainda não foi utilizada.
+	 */
+	public boolean verificarCoordenadaUtilizada(String coordenada) {
+		
+		boolean coordUtilizada = false;
+		
+		// A lista está vazia?
+		if(coordenadaUtilizada.size() == 0) {
+			
+			// Não tem elementos para comparar, retorna para o método chamador.
+			return coordUtilizada;
+			
+		}
+		
+		// Consultar na lista de coordenadas utilizadas, a coordenada informada.
+		for(String coord : coordenadaUtilizada) {
+			
+			// A coordenada informada não existe?
+			if(!coord.equals(coordenada)) {
+				
+				coordUtilizada = false;
+				
+			// Coordenada já foi usada!
+			} else {
+				
+				coordUtilizada = true;
+				
+				/* Se a coordenada foi utilizada não é mais necessário pesquisar na lista.
+				 * Deste ponto retornamos para o método chamador. */
+				return coordUtilizada;
+				
+			}
+			
+		}
+		
+		return coordUtilizada;
+		
+	}
+	
+	
+	/**
+	 * Inicializa a lista;
+	 */
+	public void inicializaCoordenadasUtilizadas() {
+		
+		coordenadaUtilizada.clear();
+		
+	}
+	
+	/**
+	 * Grava o valor da nova coordenada para se mantar controle do que já foi utilizado.
+	 * 
+	 * @param coordenada A coordenada informada pelo usuário.
+	 */
+	private void insereCoordenadaUtilizadaNaLista(String coordenada) {
+
+		// Grava a coordenada utilizada na lista de strings.
+		coordenadaUtilizada.add(coordenada);
+		
+	}
+
 	/**
 	 * Recebe a coordenada informada pelo usuário.
 	 * @param coordenada A coordenada no formato número mais letra.
 	 */
 	public void receberCoordenadaNavio(String coordenada) {
+		
+		this.insereCoordenadaUtilizadaNaLista(coordenada);
 		
 		int cordLinha = Integer.valueOf(String.valueOf(coordenada.charAt(0)));
 		int cordColuna = 0;
@@ -134,7 +207,7 @@ public class Tabuleiro {
 			
 		}
 		
-		coordenada = String.valueOf(cordLinha) + String.valueOf(cordColuna); 
+		coordenada = String.valueOf(cordLinha) + String.valueOf(cordColuna);
 		
 		// Atingiu a 1º parte do porta aviões ?
 		if(coordenada.equals(portaAviao.getPosPart1())) {
