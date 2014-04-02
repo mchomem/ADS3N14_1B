@@ -2,6 +2,7 @@ package br.com.misatech.batalhanaval.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Representação do tabuleiro da batalha naval utilizando uma matriz de Strings 10 x 10..
@@ -402,27 +403,88 @@ public class Tabuleiro {
 	 */
 	public void distribuirNavios() {
 		
-		// Considerar 1º digito a linha e o 2º a coluna.
+		// Considerar 1º digito a linha e o 2º a coluna para o valor de coordenada.
 		
-		portaAviao.setPosPart1("10");
-		portaAviao.setPosPart2("20");
-		portaAviao.setPosPart3("30");
-		portaAviao.setPosPart4("40");
-		portaAviao.setPosPart5("50");
+		// Randomizar posições.
+		int n = 0;
+		Random r = new Random();
+		n = r.nextInt(3) + 1; // de 1 a 3;
 		
-		destroyer.setPosPart1("38");
-		destroyer.setPosPart2("48");
-		destroyer.setPosPart3("58");
-		destroyer.setPosPart4("68");
+		switch (n) {
 		
-		fragata.setPosPart1("43");
-		fragata.setPosPart2("44");
-		fragata.setPosPart3("45");
-		
-		torpedeiro.setPosPart1("72");
-		torpedeiro.setPosPart2("73");
-		
-		submarino.setPosPart1("14");
+			case 1:
+				// linha x coluna
+				portaAviao.setPosPart1("10");
+				portaAviao.setPosPart2("20");
+				portaAviao.setPosPart3("30");
+				portaAviao.setPosPart4("40");
+				portaAviao.setPosPart5("50");
+				
+				destroyer.setPosPart1("38");
+				destroyer.setPosPart2("48");
+				destroyer.setPosPart3("58");
+				destroyer.setPosPart4("68");
+				
+				fragata.setPosPart1("43");
+				fragata.setPosPart2("44");
+				fragata.setPosPart3("45");
+				
+				torpedeiro.setPosPart1("72");
+				torpedeiro.setPosPart2("73");
+				
+				submarino.setPosPart1("14");
+				break;
+				
+			case 2:
+				// linha x coluna
+				portaAviao.setPosPart1("51");
+				portaAviao.setPosPart2("61");
+				portaAviao.setPosPart3("71");
+				portaAviao.setPosPart4("81");
+				portaAviao.setPosPart5("91");
+				
+				destroyer.setPosPart1("94");
+				destroyer.setPosPart2("95");
+				destroyer.setPosPart3("96");
+				destroyer.setPosPart4("97");
+				
+				fragata.setPosPart1("19");
+				fragata.setPosPart2("29");
+				fragata.setPosPart3("39");
+				
+				torpedeiro.setPosPart1("00");
+				torpedeiro.setPosPart2("10");
+				
+				submarino.setPosPart1("90");
+				break;
+				
+			case 3:
+				// linha x coluna
+				portaAviao.setPosPart1("00");
+				portaAviao.setPosPart2("01");
+				portaAviao.setPosPart3("02");
+				portaAviao.setPosPart4("03");
+				portaAviao.setPosPart5("04");
+				
+				destroyer.setPosPart1("35");
+				destroyer.setPosPart2("45");
+				destroyer.setPosPart3("55");
+				destroyer.setPosPart4("65");
+				
+				fragata.setPosPart1("79");
+				fragata.setPosPart2("89");
+				fragata.setPosPart3("99");
+				
+				torpedeiro.setPosPart1("52");
+				torpedeiro.setPosPart2("53");
+				
+				submarino.setPosPart1("28");
+				break;
+	
+			default:
+				break;
+				
+		}
 		
 	}
 	

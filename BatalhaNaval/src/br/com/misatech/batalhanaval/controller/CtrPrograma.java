@@ -35,11 +35,10 @@ public class CtrPrograma {
 	
 		console.imprimir("Batalha Naval Java.\n");
 		tabuleiro.iniciar();
+		tabuleiro.distribuirNavios();
 		String opcao = "";
 		
 		do {
-			
-			tabuleiro.distribuirNavios();
 			
 			console.imprimir(tabuleiro.imprimir());
 			console.imprimir("Placar: " + placar.getPontuacao() + " pontos\n");
@@ -100,6 +99,7 @@ public class CtrPrograma {
 		
 		console.imprimir("Partida reiniciada.");
 		tabuleiro.iniciar();
+		tabuleiro.distribuirNavios();
 		tabuleiro.inicializaCoordenadasUtilizadas();
 		placar.setPontuacao(15);
 		
