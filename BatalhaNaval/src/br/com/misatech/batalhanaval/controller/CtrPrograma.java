@@ -58,17 +58,13 @@ public class CtrPrograma {
 			
 			case "2":
 				
-				tabuleiro.iniciar();
-				tabuleiro.inicializaCoordenadasUtilizadas();
-				placar.setPontuacao(15);
-				
+				this.reiniciarPartida();
 				break;
 				
 			case "3":
-
+				
 				// Game cheat.
-				console.imprimir("Revelando posição dos navios.");
-				tabuleiro.revelarPosicaoNavios();
+				this.executarGameCheatCode();
 				break;
 
 			case "0":
@@ -94,6 +90,18 @@ public class CtrPrograma {
 		
 		console.imprimir("Fim do jogo.");
 		System.exit(0);
+		
+	}
+	
+	/**
+	 * Reinicia a partida, resetando os controles da aplicação.
+	 */
+	private void reiniciarPartida() {
+		
+		console.imprimir("Partida reiniciada.");
+		tabuleiro.iniciar();
+		tabuleiro.inicializaCoordenadasUtilizadas();
+		placar.setPontuacao(15);
 		
 	}
 	
@@ -298,6 +306,16 @@ public class CtrPrograma {
 			this.finalizar();
 			
 		}
+		
+	}
+	
+	/**
+	 * Executa um game cheat code.
+	 */
+	private void executarGameCheatCode() {
+		
+		console.imprimir("Revelando posição dos navios.");
+		tabuleiro.revelarPosicaoNavios();
 		
 	}
 	
