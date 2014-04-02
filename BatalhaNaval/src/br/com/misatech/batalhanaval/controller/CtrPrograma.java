@@ -13,9 +13,9 @@ import br.com.misatech.batalhanaval.view.Console;
  */
 public class CtrPrograma {
 	
-	private Console console;
+	private Console   console;
 	private Tabuleiro tabuleiro;
-	private Placar placar;
+	private Placar    placar;
 	
 	/**
 	 * Construtor padrão da classe.
@@ -270,9 +270,6 @@ public class CtrPrograma {
 			
 		}
 		
-		// A informação de torpedo é iniciada.
-		infoTorpedo = "";
-		
 	}
-
+	
 }
