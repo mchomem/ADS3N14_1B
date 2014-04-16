@@ -3,11 +3,20 @@ package br.com.misatech.ordenacao.controller;
 import br.com.misatech.ordenacao.model.Ordenacao;
 import br.com.misatech.ordenacao.view.Console;
 
+/**
+ * Classe controladora da aplicação de Ordenação.
+ * 
+ * @author Misael
+ *
+ */
 public class CtrPrograma {
 	
 	private Console   console;
 	private Ordenacao ordenacao;
 	
+	/**
+	 * Construtor padrão.
+	 */
 	public CtrPrograma() {
 		
 		console   = new Console();
@@ -15,6 +24,9 @@ public class CtrPrograma {
 		
 	}
 	
+	/**
+	 * Incia a aplicação.
+	 */
 	public void iniciar() {
 		
 		String opcao = "";
@@ -43,6 +55,8 @@ public class CtrPrograma {
 				ordenacao.setCountInsertSort(0);
 				ordenacao.setCountHeapSort(0);
 				
+				console.imprimir("\n");
+				
 				console.imprimir("Quantidade de trocas:");
 				console.imprimir("Insert Sort:\t" + ordenacao.getCountChangeInsertSort());
 				console.imprimir("Heap Sort:\t"   + ordenacao.getCountChangeHeapSort());
@@ -68,7 +82,10 @@ public class CtrPrograma {
 		} while(true);
 		
 	}
-	
+
+	/**
+	 * Finaliza a aplicação.
+	 */
 	public void finalizar() {
 		
 		console.imprimir("Programa encerrado.");

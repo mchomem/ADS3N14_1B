@@ -15,8 +15,11 @@ public class Ordenacao {
 	private long countHeapSort;
 	private long countChangeInsertSort;
 	private long countChangeHeapSort;
-	private int[] array;
+	private int[] arranjo;
 	
+	/**
+	 * Construtor da classe.
+	 */
 	public Ordenacao() {}
 	
 	/**
@@ -28,15 +31,15 @@ public class Ordenacao {
 	public int[] gerarArray(int num) {
 		
 		Random random = new Random();
-		array = new int[num];
+		arranjo = new int[num];
 		
-		for(int i = 0; i < array.length; i++) {
+		for(int i = 0; i < arranjo.length; i++) {
 			
-			array[i] = random.nextInt(num + 1);
+			arranjo[i] = random.nextInt(num + 1);
 			
 		}
 		
-		return array;
+		return arranjo;
 		
 	}
 	
@@ -45,7 +48,15 @@ public class Ordenacao {
 	 */
 	public void InsertSort() {
 		
-		int[] arrayInsert = array;
+		// Inicia o arrayauxilizar com o tamanho do original.
+		int[] arrayInsert = new int[arranjo.length];
+		
+		// ALimentando o array auxiliar indice a indice do array original.
+		for(int i = 0; i < arranjo.length; i++) {
+			
+			arrayInsert[i] = arranjo[i];
+			
+		}
 		
         for(int fixo = 1; fixo <= arrayInsert.length; fixo++) {
         	 
@@ -54,7 +65,8 @@ public class Ordenacao {
  
         	while(y != 0 && y != arrayInsert.length && arrayInsert[x] > arrayInsert[y]) {
     			
-        		countInsertSort++;
+        		this.countInsertSort++;
+        		this.countChangeInsertSort++;
         		
         		int a = arrayInsert[x];
         		arrayInsert[x] = arrayInsert[y];
@@ -73,7 +85,16 @@ public class Ordenacao {
 	 */
 	public void HeapSort() {
 		
-		int[] arrayHeapSort = array;
+		// Inicia o arrayauxilizar com o tamanho do original.
+		int[] arrayHeapSort = new int[arranjo.length];
+		
+		// ALimentando o array auxiliar indice a indice do array original.
+		for(int i = 0; i < arranjo.length; i++) {
+			
+			arrayHeapSort[i] = arranjo[i];
+			
+		}
+		
         buildMaxHeap(arrayHeapSort);
         int n = arrayHeapSort.length;
 
@@ -93,16 +114,16 @@ public class Ordenacao {
 	 */
 	private void buildMaxHeap(int[] v) {
 		
-		for (int i = v.length/2 - 1; i >= 0; i--) {
+		for (int i = v.length / 2 - 1; i >= 0; i--) {
 			
-			maxHeapify(v, i , v. length );
+			maxHeapify(v, i, v.length);
 			
 		}
 		
 	}
 	
 	/**
-	 * Método auxilaiar para HeapSort().
+	 * Método auxiliar para HeapSort().
 	 * 
 	 * @param v
 	 * @param pos
@@ -114,26 +135,30 @@ public class Ordenacao {
         int l     = 2 * pos + 1;
         int right = 2 * pos + 2;
          
-        if ( (l < n) && (v[l] > v[pos]) ) {
+        if ((l < n) && (v[l] > v[pos])) {
         	
             maxi = l;
+            this.countHeapSort++;
             
         } else {
 
     		maxi = pos;
-            
+    		this.countHeapSort++;
+    		
         }
          
         if (right < n && v[right] > v[maxi]) {
             
         	maxi = right;
-        	 
+        	this.countHeapSort++;
+        	
         }
          
         if (maxi != pos) {
         	 
         	swap(v, pos, maxi);
             maxHeapify(v, maxi, n);
+            this.countHeapSort++;
             
         }
          
@@ -148,13 +173,14 @@ public class Ordenacao {
 	 */
 	private void swap (int[] v, int j, int aposJ) {
 		
-		countHeapSort++;
+		this.countChangeHeapSort++;
 		int aux  = v[j];
 		v[j]     = v[aposJ];
 		v[aposJ] = aux;
 
 	}
 	
+	// Getter's and Setter's
 	public long getCountInsertSort() {
 		return countInsertSort;
 	}
