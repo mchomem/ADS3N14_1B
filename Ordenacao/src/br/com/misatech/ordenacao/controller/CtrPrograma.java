@@ -43,6 +43,14 @@ public class CtrPrograma {
 				ordenacao.setCountInsertSort(0);
 				ordenacao.setCountHeapSort(0);
 				
+				console.imprimir("Quantidade de trocas:");
+				console.imprimir("Insert Sort:\t" + ordenacao.getCountChangeInsertSort());
+				console.imprimir("Heap Sort:\t"   + ordenacao.getCountChangeHeapSort());
+				
+				// Inicia o valor dos campos da Ordenação.
+				ordenacao.setCountChangeInsertSort(0);
+				ordenacao.setCountChangeHeapSort(0);
+				
 				break;
 
 			case "0":

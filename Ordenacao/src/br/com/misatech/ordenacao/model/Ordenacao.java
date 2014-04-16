@@ -11,8 +11,10 @@ import java.util.Random;
  */
 public class Ordenacao {
 	
-	private int countInsertSort;
-	private int countHeapSort;
+	private long countInsertSort;
+	private long countHeapSort;
+	private long countChangeInsertSort;
+	private long countChangeHeapSort;
 	private int[] array;
 	
 	public Ordenacao() {}
@@ -157,7 +159,7 @@ public class Ordenacao {
 		return countInsertSort;
 	}
 
-	public void setCountInsertSort(int countInsertSort) {
+	public void setCountInsertSort(long countInsertSort) {
 		this.countInsertSort = countInsertSort;
 	}
 
@@ -165,8 +167,24 @@ public class Ordenacao {
 		return countHeapSort;
 	}
 
-	public void setCountHeapSort(int countHeapSort) {
+	public void setCountHeapSort(long countHeapSort) {
 		this.countHeapSort = countHeapSort;
+	}
+
+	public long getCountChangeInsertSort() {
+		return countChangeInsertSort;
+	}
+
+	public void setCountChangeInsertSort(long countChangeInsertSort) {
+		this.countChangeInsertSort = countChangeInsertSort;
+	}
+
+	public long getCountChangeHeapSort() {
+		return countChangeHeapSort;
+	}
+
+	public void setCountChangeHeapSort(long countChangeHeapSort) {
+		this.countChangeHeapSort = countChangeHeapSort;
 	}
 
 }
