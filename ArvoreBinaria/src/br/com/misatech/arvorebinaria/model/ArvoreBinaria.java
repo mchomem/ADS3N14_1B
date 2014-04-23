@@ -85,10 +85,10 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	public void consulta(String nome) {
+	public String consulta(String nome) {
 
 		// Concluir implementação.
-		
+		return "";
 	}
 	
 	/**

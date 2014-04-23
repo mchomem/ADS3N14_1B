@@ -131,7 +131,7 @@ public class CtrPrograma<T> {
 				
 				case "1":
 					
-					console.imprimir("*** Inserindo ***");
+					console.imprimir("\n*** Inserindo ***\n");
 					String nome = console.cursor("Informe o nome");
 					String numero = console.cursor("Informe o numero");
 					
@@ -150,21 +150,22 @@ public class CtrPrograma<T> {
 					
 				case "2":
 					
-					console.imprimir("*** Excluindo ***");
+					console.imprimir("\n*** Excluindo ***\n");
 					String nomeExclusao = console.cursor("Informe o valor a ser excluido");
 					this.arvoreBinaria.excluir(nomeExclusao);
+					console.imprimir("Registro excluído.");
 					break;
 					
 				case "3":
 					
-					console.imprimir("*** Consultando ***");
+					console.imprimir("\n*** Consultando ***\n");
 					String nomeContato = console.cursor("Informe o nome do contato");
-					this.arvoreBinaria.consulta(nomeContato);
+					console.imprimir(this.arvoreBinaria.consulta(nomeContato));
 					break;
 					
 				case "4":
 					
-					console.imprimir("*** Relatório (InFixa) ***");
+					console.imprimir("\n*** Relatório (InFixa) ***\n");
 					this.arvoreBinaria.inFixa(this.arvoreBinaria.getRaiz());
 					console.imprimir(this.arvoreBinaria.getElemento());
 					this.arvoreBinaria.inicializaElemento();
@@ -172,7 +173,7 @@ public class CtrPrograma<T> {
 					
 				case "5":
 					
-					console.imprimir("*** Relatório (PreFixa) ***");
+					console.imprimir("\n*** Relatório (PreFixa) ***\n");
 					this.arvoreBinaria.preFixa(this.arvoreBinaria.getRaiz());
 					console.imprimir(this.arvoreBinaria.getElemento());
 					this.arvoreBinaria.inicializaElemento();
@@ -180,7 +181,7 @@ public class CtrPrograma<T> {
 					
 				case "6":
 					
-					console.imprimir("*** Relatório (PosFixa) ***");
+					console.imprimir("\n*** Relatório (PosFixa) ***\n");
 					this.arvoreBinaria.posFixa(this.arvoreBinaria.getRaiz());
 					console.imprimir(this.arvoreBinaria.getElemento());
 					this.arvoreBinaria.inicializaElemento();
