@@ -34,17 +34,18 @@ public class CtrPrograma<T> {
 	}
 	
 	/**
-	 * Inicia a árvore binária com os dados do arquivo.
+	 * Carrega a árvore binária com os dados obtidos do arquivo texto.
 	 * 
 	 * @throws HeadlessException
 	 * @throws IOException
 	 */
-	private void iniciarArvoreBinaria() throws HeadlessException, IOException {
+	private void carregarArvoreBinaria() throws HeadlessException, IOException {
 		
 		arquivo = new Arquivo();
 		String linhaArquivo;
 		
-		while( (linhaArquivo = arquivo.consultar())!= null) {
+		// O arquivo está vazio?
+		while((linhaArquivo = arquivo.consultar())!= null) {
 			
 			String[] valores = linhaArquivo.split("\\|");
 			
@@ -103,7 +104,7 @@ public class CtrPrograma<T> {
 
 		try {
 			
-			this.iniciarArvoreBinaria();
+			this.carregarArvoreBinaria();
 			
 		} catch(IOException e) {
 			

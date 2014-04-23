@@ -1,3 +1,4 @@
+// http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria
 // http://manfred.com.br/index.php/bsi/estrutura-de-dados-i/141-aula-10-arvore-binaria-em-java
 // http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria_de_busca
 
