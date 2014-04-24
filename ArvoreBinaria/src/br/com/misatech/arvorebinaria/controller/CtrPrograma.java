@@ -151,7 +151,7 @@ public class CtrPrograma<T> {
 					
 					console.imprimir("\n*** Excluindo ***\n");
 					String nomeExclusao = console.cursor("Informe o valor a ser excluido");
-					this.arvoreBinaria.excluir(this.arvoreBinaria.getRaiz() ,  nomeExclusao);
+					this.arvoreBinaria.excluir(this.arvoreBinaria.getRaiz() , null, nomeExclusao);
 					
 					break;
 					

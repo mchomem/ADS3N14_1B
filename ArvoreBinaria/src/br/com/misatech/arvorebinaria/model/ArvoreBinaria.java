@@ -121,17 +121,110 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	public void excluir(No<T> atual,  String nome) {
+	public void excluir(No<T> atual, No<T> anterior ,String nome) {
+		
+		int cmp = 0;
 		
 		// Existe nó na árvore?
 		if(atual != null) {
 			
-			// O nó é folha ?
-			if(atual.getGalhoEsquerda() == null && atual.getGalhoDireita() == null) {
+			cmp = nome.compareTo(atual.getContato().getNome());
+
+			// Valor para exclusão foi localizado?
+			if(cmp == 0) {
 				
+				// O nó é folha (não tem galhos)?
+				if(atual.getGalhoEsquerda() == null && atual.getGalhoDireita() == null) {
+					
+					// Eliminar a referência do galho (esquerda ou direita) do nó anterior a este.
+					if(anterior.getGalhoEsquerda() != null) {
+						// O nó anterior aponta para o nó a ser excluido pelo galho da esquerda?
+						if(anterior.getGalhoEsquerda().getContato().getNome().equals(nome)) {
+							anterior.setGalhoEsquerda(null);
+						}
+					}
+					
+					if(anterior.getGalhoDireita() != null) {
+						// O nó anterior aponta para o nó a ser excluido pelo galho da direita?
+						if(anterior.getGalhoDireita().getContato().getNome().equals(nome)) {
+							anterior.setGalhoDireita(null);
+						}
+					}
+					
+					// Elimina o nó.
+					atual = null;
+					return;
+					
+				}
 				
+				// O nó tem um filho a esquerda?
+				if(atual.getGalhoEsquerda() != null && atual.getGalhoDireita() == null) {
+					
+					// Alterar a referência do galho (esquerda ou direita) do nó anterior a este.
+					if(anterior.getGalhoEsquerda() != null) {
+						// O nó anterior aponta para o nó a ser excluido pelo galho da esquerda?
+						if(anterior.getGalhoEsquerda().getContato().getNome().equals(nome)) {
+							anterior.setGalhoEsquerda(atual.getGalhoEsquerda());
+						}
+					}
+					
+					if(anterior.getGalhoDireita() != null) {
+						// O nó anterior aponta para o nó a ser excluido pelo galho da direita?
+						if(anterior.getGalhoDireita().getContato().getNome().equals(nome)) {
+							anterior.setGalhoDireita(atual.getGalhoEsquerda());
+						}
+					}
+					
+					// Elimina o nó.
+					atual = null;
+					return;
+					
+				}
+				
+				// O nó tem um filho a direita?
+				if(atual.getGalhoEsquerda() == null && atual.getGalhoDireita() != null) {
+					
+					// Alterar a referência do galho (esquerda ou direita) do nó anterior a este.
+					if(anterior.getGalhoEsquerda() != null) {
+						// O nó anterior aponta para o nó a ser excluido pelo galho da esquerda?
+						if(anterior.getGalhoEsquerda().getContato().getNome().equals(nome)) {
+							anterior.setGalhoEsquerda(atual.getGalhoDireita());
+						}
+					}
+					
+					if(anterior.getGalhoDireita() != null) {
+						// O nó anterior aponta para o nó a ser excluido pelo galho da direita?
+						if(anterior.getGalhoDireita().getContato().getNome().equals(nome)) {
+							anterior.setGalhoDireita(atual.getGalhoDireita());
+						}
+					}
+					
+					// Elimina o nó.
+					atual = null;
+					return;
+					
+				}
+				
+				// O nó tem dois filhos?
+				if(atual.getGalhoEsquerda() != null && atual.getGalhoDireita() != null) {
+					
+					
+					
+				}
+				
+			} else if(cmp < 0) {
+				
+				this.excluir(atual.getGalhoEsquerda(), atual, nome);
+				
+			} else {
+				
+				this.excluir(atual.getGalhoDireita(), atual, nome);
 				
 			}
+			
+		} else {
+			
+			this.elemento = "Valor não localizado.";
 			
 		}
 		
