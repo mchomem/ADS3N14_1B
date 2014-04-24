@@ -52,17 +52,16 @@ public class CtrPrograma<T> {
 			// A árvore está vazia?
 			if(arvoreBinaria.getRaiz() == null) {
 				
-				No<String> no = new No<String>();
-				no.setContato(new Contato(valores[0], valores[1]));
-				arvoreBinaria.inserir(no);
-				anterior = no;
+				No<String> novo = new No<String>();
+				novo.setContato(new Contato(valores[0], valores[1]));
+				arvoreBinaria.inserir(novo);
+				anterior = novo; // <- Verificar a necessidade de uso do campo "anterior".
 				
 			} else {
 				
-				No<String> no = new No<String>();
-				no.setContato(new Contato(valores[0], valores[1]));
-				arvoreBinaria.inserir(no, anterior);
-				anterior = no;
+				No<String> novo = new No<String>();
+				novo.setContato(new Contato(valores[0], valores[1]));
+				arvoreBinaria.inserirFormaBST(novo, this.arvoreBinaria.getRaiz());
 				
 			}
 			
@@ -76,23 +75,23 @@ public class CtrPrograma<T> {
 		
 		// Grava o novo registro no arquivo utilizando a flag de cadastro ativo "S"
 		String linhaArquivo = nome + "|" + numero + "|S";
-		No<String> no = new No<String>();
-		no.setContato(new Contato(nome, numero));
+		No<String> novo = new No<String>();
+		novo.setContato(new Contato(nome, numero));
 		
-		// A árvore está vazia?
+		// A árvore possui algum nó?
 		if(arvoreBinaria.getRaiz() == null) {
 
 			// Insere o 1º nó.
-			arvoreBinaria.inserir(no);
+			arvoreBinaria.inserir(novo);
 			
 		} else {
 			
 			// Insere um nó com árvore não vazia.
-			arvoreBinaria.inserir(no, anterior);
+			arvoreBinaria.inserirFormaBST(novo, this.arvoreBinaria.getRaiz());
 			
 		}
 		
-		anterior = no;
+		anterior = novo;
 		arquivo.gravar(linhaArquivo);
 		
 	}
@@ -160,7 +159,11 @@ public class CtrPrograma<T> {
 					
 					console.imprimir("\n*** Consultando ***\n");
 					String nomeContato = console.cursor("Informe o nome do contato");
-					console.imprimir(this.arvoreBinaria.consulta(nomeContato));
+					this.arvoreBinaria.consultar(this.arvoreBinaria.getRaiz(), nomeContato);
+					console.imprimir("\n" + this.arvoreBinaria.getElemento());
+					console.imprimir("Total de comparações: " + this.arvoreBinaria.getComparacao());
+					this.arvoreBinaria.setComparacao(0);
+					this.arvoreBinaria.inicializaElemento();
 					break;
 					
 				case "4":
