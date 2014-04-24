@@ -121,37 +121,48 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	public void excluir(String nome) {
+	public void excluir(No<T> atual,  String nome) {
 		
-		// Concluir implementação.
+		// Existe nó na árvore?
+		if(atual != null) {
+			
+			// O nó é folha ?
+			if(atual.getGalhoEsquerda() == null && atual.getGalhoDireita() == null) {
+				
+				
+				
+			}
+			
+		}
+		
 		
 	}
 	
-	public void consultar(No<T> no, String nome) {
+	public void consultar(No<T> atual, String nome) {
 
 		int cmp = 0;
 		
 		// Existe nó na árvore binária?
-		if(no != null) {
+		if(atual != null) {
 			
 			// Comparar o valor(nome) informado pelo usuário com o valor do nó atual.
-			cmp = nome.compareTo(no.getContato().getNome());
+			cmp = nome.compareTo(atual.getContato().getNome());
 			this.comparacao++;
 			
 			// O valor(nome) da consulta é igual ao valor no nó?
 			if(cmp == 0) {
 				
-				this.elemento = no.getContato().getNome() + " " + no.getContato().getNumero();
+				this.elemento = atual.getContato().getNome() + " " + atual.getContato().getNumero();
 				
 			// O valor é menor?
 			} else if(cmp < 0) {
 				
-				this.consultar(no.getGalhoEsquerda(), nome);
+				this.consultar(atual.getGalhoEsquerda(), nome);
 				
 			// O valor é maior?
 			} else {
 				
-				this.consultar(no.getGalhoDireita(), nome);
+				this.consultar(atual.getGalhoDireita(), nome);
 				
 			}
 			
