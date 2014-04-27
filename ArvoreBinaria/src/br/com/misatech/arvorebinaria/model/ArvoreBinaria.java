@@ -13,6 +13,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	private No<T>  raiz;
 	private String elemento;
 	private long comparacao;
+	private long qtNo;
 	
 	/**
 	 * Construtor padrão da classe.
@@ -33,6 +34,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		novo.setGalhoDireita(raiz);
 		
 		raiz = novo;
+		this.qtNo++;
 		
 	}
 	
@@ -73,7 +75,12 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	// Testar, verificar se não terá que mudar a estrutra do campo raiz, que recebe valor do novo no método inserir 1º vez)
+	/**
+	 * Insere um elemento baseado na implementação de árvorne binária de pesquisa/busca.
+	 * 
+	 * @param novo O novo nó que está entrando na árvore.
+	 * @param atual O nó atual para inciar a comparação.
+	 */
 	public void inserirFormaBST(No<T> novo, No<T> atual) {
 		
 		int cmp = 0;
@@ -96,6 +103,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 				// Insere o novo nó a esquerda do nó atual.
 				atual.setGalhoEsquerda(novo);
+				this.qtNo++;
 				
 			}
 			
@@ -115,12 +123,15 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				
 				// Insere o novo nó a direita do nó atual.
 				atual.setGalhoDireita(novo);
+				this.qtNo++;
 				
 			}
 		}
 		
 	}
 	
+	// Exclusão utilizando a idéia do link http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria_de_busca
+	// REVISAR!!! -> fez apenas um dos cenários de exclusão (nó com um filho)
 	public void excluir(No<T> atual, No<T> anterior ,String nome) {
 		
 		int cmp = 0;
@@ -177,6 +188,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 					
 					// Elimina o nó.
 					atual = null;
+					this.elemento = "Registro excluído";
 					return;
 					
 				}
@@ -201,6 +213,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 					
 					// Elimina o nó.
 					atual = null;
+					this.elemento = "Registro excluído";
 					return;
 					
 				}
@@ -345,6 +358,14 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 	public void setComparacao(long comparacao) {
 		this.comparacao = comparacao;
+	}
+
+	public long getQtNo() {
+		return qtNo;
+	}
+
+	public void setQtNo(long qtNo) {
+		this.qtNo = qtNo;
 	}
 	
 }

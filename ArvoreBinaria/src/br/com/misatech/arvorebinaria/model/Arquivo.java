@@ -15,7 +15,7 @@ import java.io.PrintWriter;
  */
 public class Arquivo {
 	
-	private final String CAMINHO_ARQUIVO = "Dados\\Contato.txt";
+	private static final String CAMINHO_ARQUIVO = "Dados\\Contato.txt";
 	private FileReader arq;
 	private BufferedReader lerArq;
 	

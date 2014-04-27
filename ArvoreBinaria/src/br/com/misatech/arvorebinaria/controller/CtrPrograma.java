@@ -112,6 +112,7 @@ public class CtrPrograma<T> {
 		}
 		
 		console.imprimir("*** Contato Telefônico ***");
+		console.imprimir("Altura atual: ");
 		String opcao = "";
 		
 		do {
@@ -145,6 +146,7 @@ public class CtrPrograma<T> {
 					}
 					
 					console.imprimir("Contato adicionado.");
+					console.imprimir("Qt. elementos atual: " + this.arvoreBinaria.getQtNo() + ((this.arvoreBinaria.getQtNo() > 1) ? " elementos" : "elemento"));
 					break;
 					
 				case "2":
@@ -152,7 +154,8 @@ public class CtrPrograma<T> {
 					console.imprimir("\n*** Excluindo ***\n");
 					String nomeExclusao = console.cursor("Informe o valor a ser excluido");
 					this.arvoreBinaria.excluir(this.arvoreBinaria.getRaiz() , null, nomeExclusao);
-					
+					console.imprimir(this.arvoreBinaria.getElemento());
+					this.arvoreBinaria.inicializaElemento();
 					break;
 					
 				case "3":
