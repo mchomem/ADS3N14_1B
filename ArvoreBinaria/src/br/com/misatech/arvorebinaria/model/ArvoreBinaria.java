@@ -137,11 +137,19 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				this.altura = novo.getNivel();
 				
 			}
+			
+		// Se for igual? Não deixa inserir (na árvore binária de pesquisa não pode haver valores iguais).
+		// OBS: atenção para os seguintes casos: Misael e misael, pois o compareTo distingue a caixa alta da baixa.
+		} else if(cmp == 0) {
+			
+			return;
+			
 		}
 		
 	}
 	
 	// Exclusão utilizando a idéia do link http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria_de_busca
+	// Decrementar o nível dos nós na exclusão.
 	// REVISAR!!! -> fez apenas um dos cenários de exclusão (nó com um filho)
 	public void excluir(No<T> atual, No<T> anterior ,String nome) {
 		
