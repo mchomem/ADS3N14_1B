@@ -267,6 +267,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		} else {
 			
 			this.elemento = "Valor não localizado.";
+			this.comparacao = 0;
 			
 		}
 		
@@ -294,9 +295,9 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 			this.inFixa(no.getGalhoEsquerda());
 	    	this.elemento += no.getContato().getNome() + " " +  no.getContato().getNumero() + "\n";
 	    	this.inFixa(no.getGalhoDireita());
-	         
+	    	
 		}
-	     
+		
 	}
 
 	/**
@@ -304,15 +305,15 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * @param no O nó raiz da árvore.
 	 */
 	public void preFixa(No<T> no) {
-		 
+		
 	    if(no != null) {
-	    	 
+	    	
 	    	this.elemento += no.getContato().getNome() + " " +  no.getContato().getNumero() + "\n";
 	    	this.preFixa(no.getGalhoEsquerda());
 	    	this.preFixa(no.getGalhoDireita());
-	         
+	    	
 	    }
-	     
+	    
 	}
 	
 	/**
@@ -320,7 +321,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * @param no O nó raiz da árvore.
 	 */
 	public void posFixa(No<T> no) {
-		 
+		
 	    if(no != null) {
 	    	
 	    	this.posFixa(no.getGalhoEsquerda());
@@ -328,7 +329,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	        this.elemento += no.getContato().getNome() + " " +  no.getContato().getNumero() + "\n";
 	        
 	    }
-	     
+	    
 	}
 	
 	/**
