@@ -28,7 +28,7 @@ public class CtrPrograma<T> {
 	 */
 	public CtrPrograma() {
 		
-		this.console = new Console();
+		this.console       = new Console();
 		this.arvoreBinaria = new ArvoreBinaria<String>();
 		
 	}
@@ -41,7 +41,7 @@ public class CtrPrograma<T> {
 	 */
 	private void carregarArvoreBinaria() throws HeadlessException, IOException {
 		
-		arquivo = new Arquivo();
+		this.arquivo = new Arquivo();
 		String linhaArquivo;
 		
 		// O arquivo está vazio?
@@ -67,14 +67,16 @@ public class CtrPrograma<T> {
 			
 		}
 		
+		this.arvoreBinaria.inicializaElemento();
+		
 	}
 	
 	public void inserirValor(String nome, String numero) throws Exception {
 		
-		arquivo = new Arquivo();
+		this.arquivo = new Arquivo();
 		
 		// Grava o novo registro no arquivo utilizando a flag de cadastro ativo "S"
-		String linhaArquivo = nome + "|" + numero + "|S";
+		String linhaArquivo = nome + "|" + numero;
 		No<String> novo = new No<String>();
 		novo.setContato(new Contato(nome, numero));
 		
@@ -94,7 +96,7 @@ public class CtrPrograma<T> {
 		//anterior = novo;
 		
 		if(!this.arvoreBinaria.getElemento().equals("Já existe contato com este nome.")) {
-			arquivo.gravar(linhaArquivo);
+			arquivo.gravar(linhaArquivo, true);
 		}
 		
 	}
@@ -214,9 +216,23 @@ public class CtrPrograma<T> {
 	}
 	
 	/**
-	 * Finaliza a aplicação.
+	 * Grava o estado dos nós (elementos) da árvore binária e finaliza a aplicação.
 	 */
 	private void finalizar() {
+		
+		// Obtém os dados da árvore binária e os formato para serem gravados no arquivo.
+		this.arvoreBinaria.formatarDadosArquivo(this.arvoreBinaria.getRaiz());
+		
+		try {
+			
+			this.arquivo = new Arquivo();
+			this.arquivo.gravar(this.arvoreBinaria.getElemento(), false);
+		
+		} catch(IOException e) {
+		
+			console.imprimir("Erro: " + e.getMessage());
+		
+		}
 		
 		console.imprimir("Aplicação encerrada.");
 		System.exit(0);

@@ -61,7 +61,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 			// O nó atual tem algum nó no galho a esquerda?
 			if(atual.getGalhoEsquerda() != null) {
 				
-				/* Chamaa o método recursivamente passando o novo nó e o
+				/* Chama o método recursivamente passando o novo nó e o
 				 * galho esquerdo do nó atual para fazer a comparação de
 				 * valores do novo nó com o nó do galho esquerdo do nó atual. */  
 				this.inserirFormaBST(novo, atual.getGalhoEsquerda());
@@ -88,7 +88,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 			// O nó atual tem algum nó no galho a direita?
 			if(atual.getGalhoDireita() != null) {
 				
-				/* Chamaa o método recursivamente passando o novo nó e o
+				/* Chama o método recursivamente passando o novo nó e o
 				 * galho direito do nó atual para fazer a comparação de
 				 * valores do novo nó com o nó do galho direito do nó atual. */
 				this.inserirFormaBST(novo, atual.getGalhoDireita());
@@ -285,15 +285,15 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * Travessia in-fixada.<br><br>Observação: se a inserção de nós na árvore, foi uma inserção respeitando a regra de árvore binária de pesquisa<br>
 	 * o resultado desse método é imprimir todos os elementos de forma ordenada.
 	 * 
-	 * @param no O nó inicial da árvore.
+	 * @param no O nó raiz da árvore.
 	 */
 	public void inFixa(No<T> no) {
 		 
 		if(no != null) {
 	    	 
-			inFixa(no.getGalhoEsquerda());
+			this.inFixa(no.getGalhoEsquerda());
 	    	this.elemento += no.getContato().getNome() + " " +  no.getContato().getNumero() + "\n";
-	        inFixa(no.getGalhoDireita());
+	    	this.inFixa(no.getGalhoDireita());
 	         
 		}
 	     
@@ -301,15 +301,15 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 	/**
 	 * Travessia pré-fixada.
-	 * @param no O nó inicial da árvore.
+	 * @param no O nó raiz da árvore.
 	 */
 	public void preFixa(No<T> no) {
 		 
 	    if(no != null) {
 	    	 
 	    	this.elemento += no.getContato().getNome() + " " +  no.getContato().getNumero() + "\n";
-	        preFixa(no.getGalhoEsquerda());
-	        preFixa(no.getGalhoDireita());
+	    	this.preFixa(no.getGalhoEsquerda());
+	    	this.preFixa(no.getGalhoDireita());
 	         
 	    }
 	     
@@ -317,18 +317,35 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	
 	/**
 	 * Travessia pós-fixada.
-	 * @param no O nó inicial da árvore.
+	 * @param no O nó raiz da árvore.
 	 */
 	public void posFixa(No<T> no) {
 		 
 	    if(no != null) {
-	    	 
-	        posFixa(no.getGalhoEsquerda());
-	        posFixa(no.getGalhoDireita());
+	    	
+	    	this.posFixa(no.getGalhoEsquerda());
+	    	this.posFixa(no.getGalhoDireita());
 	        this.elemento += no.getContato().getNome() + " " +  no.getContato().getNumero() + "\n";
-	         
+	        
 	    }
 	     
+	}
+	
+	/**
+	 * Obtém os dados da árvore binária utlizando a travessia pré-fixa e formata para arquivo de texto.
+	 * 
+	 * @param no O nó raiz da árvore.
+	 */
+	public void formatarDadosArquivo(No<T> no) {
+		
+		if(no != null ) {
+			
+			this.elemento += no.getContato().getNome() + "|" +  no.getContato().getNumero() + "\n";
+			this.formatarDadosArquivo(no.getGalhoEsquerda());
+			this.formatarDadosArquivo(no.getGalhoDireita());
+			
+		}
+		
 	}
 
 	// Getters e Setters

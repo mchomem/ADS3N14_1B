@@ -35,12 +35,20 @@ public class Arquivo {
 	 * @param registroLinha O valor para se gravar em uma linha do arquivo texto.
 	 * @throws IOException Disparado se caso houver falha de Entrada/Saída.
 	 */
-	public void gravar(String registroLinha) throws IOException  {
+	public void gravar(String registroLinha, boolean anexar) throws IOException  {
 		
-		FileWriter  arq      = new FileWriter(CAMINHO_ARQUIVO, true);
+		FileWriter  arq      = new FileWriter(CAMINHO_ARQUIVO, anexar);
 		PrintWriter gravaArq = new PrintWriter(arq);
 		
-		gravaArq.println(registroLinha);
+		if(anexar) {
+			
+			gravaArq.println(registroLinha);
+			
+		} else {
+			
+			gravaArq.print(registroLinha);
+		}
+		
 		arq.close();
 		
 	}
