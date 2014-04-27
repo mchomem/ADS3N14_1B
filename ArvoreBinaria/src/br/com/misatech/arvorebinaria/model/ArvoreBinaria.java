@@ -27,20 +27,24 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	
 	/**
 	 * Inserção pela 1º vez.
+	 * 
 	 * @param novo O 1º nó a ser inserido na árvore.
 	 */
 	public void inserir(No<T> novo) {
 		
+		// Define o galho a esquerda e a direita do novo elemento.
 		novo.setGalhoEsquerda(raiz);
 		novo.setGalhoDireita(raiz);
 		
+		// A raiz da árvore irá receber o 1º nó. 
 		raiz = novo;
+		// Contabiliza o nó.
 		this.qtNo++;
 		
 	}
 
 	/**
-	 * Insere um elemento baseado na implementação de árvorne binária de pesquisa/busca.
+	 * Inserção pela 2º vez. Insere um elemento baseado na implementação de árvorne binária de pesquisa/busca.
 	 * 
 	 * @param novo O novo nó que está entrando na árvore.
 	 * @param atual O nó atual para inciar a comparação.
@@ -69,7 +73,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				atual.setGalhoEsquerda(novo);
 				// Configura o nivel do nó.
 				novo.setNivel(atual.getNivel() + 1);
-				// Conta o nó.
+				// Contabiliza o nó.
 				this.qtNo++;
 				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
 				this.altura = novo.getNivel();
@@ -96,7 +100,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				atual.setGalhoDireita(novo);
 				// Configura o nivel do nó.
 				novo.setNivel(atual.getNivel() + 1);
-				// Conta o nó.
+				// Contabiliza o nó.
 				this.qtNo++;
 				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
 				this.altura = novo.getNivel();
