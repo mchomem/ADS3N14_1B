@@ -12,9 +12,9 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 	private No<T>  raiz;
 	private String elemento;
-	private long comparacao;
-	private long qtNo;
-	private long altura;
+	private long   comparacao;
+	private long   qtNo;
+	private long   altura;
 	
 	/**
 	 * Construtor padrão da classe.
@@ -52,7 +52,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	public void inserirFormaBST(No<T> novo, No<T> atual) {
 		
 		int cmp = 0;
-		// Comparar os nomes do novo nó com o nó atual (já existente).
+		// Comparar os nomes do novo nó com o nó atual (já existente na árvore binária).
 		cmp = novo.getContato().getNome().compareTo(atual.getContato().getNome());
 		
 		// É menor?
@@ -71,11 +71,11 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 				// Insere o novo nó a esquerda do nó atual.
 				atual.setGalhoEsquerda(novo);
-				// Configura o nivel do nó.
+				// Configura o nivel do nó obtendo o nível do pai mais um.
 				novo.setNivel(atual.getNivel() + 1);
 				// Contabiliza o nó.
 				this.qtNo++;
-				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
+				// Obtém a altura do nó raiz em relação ao novo nó inserido.
 				this.altura = novo.getNivel();
 				// Informando estado do elemento.
 				this.elemento = "Contato inserido";
@@ -98,11 +98,11 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				
 				// Insere o novo nó a direita do nó atual.
 				atual.setGalhoDireita(novo);
-				// Configura o nivel do nó.
+				// Configura o nivel do nó obtendo o nível do pai mais um.
 				novo.setNivel(atual.getNivel() + 1);
 				// Contabiliza o nó.
 				this.qtNo++;
-				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
+				// Obtém a altura do nó raiz em relação ao novo nó inserido.
 				this.altura = novo.getNivel();
 				// Informando estado do elemento.
 				this.elemento = "Contato inserido";

@@ -18,10 +18,10 @@ import br.com.misatech.arvorebinaria.view.Console;
  */
 public class CtrPrograma<T> {
 	
-	private Console console;
-	//private No<String> anterior;
+	private Console               console;
 	private ArvoreBinaria<String> arvoreBinaria;
-	private Arquivo arquivo;
+	private Arquivo               arquivo;
+	//private No<String> anterior;
 	
 	/**
 	 * Construtor padrão da classe.
@@ -71,13 +71,20 @@ public class CtrPrograma<T> {
 		
 	}
 	
+	/**
+	 * Insere um valor na árvore binária.
+	 * 
+	 * @param nome O nome do contato.
+	 * @param numero O número telefônica do contato.
+	 * @throws Exception
+	 */
 	public void inserirValor(String nome, String numero) throws Exception {
 		
 		this.arquivo = new Arquivo();
 		
 		// Grava o novo registro no arquivo utilizando a flag de cadastro ativo "S"
 		String linhaArquivo = nome + "|" + numero;
-		No<String> novo = new No<String>();
+		No<String> novo     = new No<String>();
 		novo.setContato(new Contato(nome, numero));
 		
 		// A árvore possui algum nó?
