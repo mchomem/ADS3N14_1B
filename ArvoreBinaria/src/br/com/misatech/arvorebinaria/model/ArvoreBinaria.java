@@ -38,44 +38,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		this.qtNo++;
 		
 	}
-	
-	// Idéia da http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria
-	// mais a idéia do Jeffmann de usar o compareTo	
-	/**
-	 * Inserção de elemento com elemento já existente.
-	 * 
-	 * @param novo O novo nó de elemento.
-	 * @param anterior O nó anterior que será guardado para a inserção.
-	 * @return Um tipo nó
-	 */
-	public No<T> inserir(No<T> novo, No<T> anterior) {
-		
-		int cmp = 0;
 
-		// Existe o nó anterior?
-		if(anterior != null) {
-			
-			// Compara a nova inserção com a última inserção.
-			cmp = novo.getContato().getNome().compareTo(anterior.getContato().getNome());
-			
-			// Se o valor é menor?
-			if(cmp < 0) {
-				anterior.setGalhoEsquerda(this.inserir(novo, anterior.getGalhoEsquerda()));
-			} else {
-				// Se é menor?
-				if(cmp > 0) {
-					anterior.setGalhoDireita(this.inserir(novo, anterior.getGalhoDireita()));
-				} else {
-					return null;
-				}
-			}
-		} else {
-			anterior = novo;
-		}
-		return anterior;
-		
-	}
-	
 	/**
 	 * Insere um elemento baseado na implementação de árvorne binária de pesquisa/busca.
 	 * 

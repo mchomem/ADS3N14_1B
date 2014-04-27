@@ -19,7 +19,7 @@ import br.com.misatech.arvorebinaria.view.Console;
 public class CtrPrograma<T> {
 	
 	private Console console;
-	private No<String> anterior;
+	//private No<String> anterior;
 	private ArvoreBinaria<String> arvoreBinaria;
 	private Arquivo arquivo;
 	
@@ -55,7 +55,7 @@ public class CtrPrograma<T> {
 				No<String> novo = new No<String>();
 				novo.setContato(new Contato(valores[0], valores[1]));
 				arvoreBinaria.inserir(novo);
-				anterior = novo; // <- Verificar a necessidade de uso do campo "anterior".
+				//anterior = novo; // <- Verificar a necessidade de uso do campo "anterior".
 				
 			} else {
 				
@@ -91,7 +91,7 @@ public class CtrPrograma<T> {
 			
 		}
 		
-		anterior = novo;
+		//anterior = novo;
 		
 		if(!this.arvoreBinaria.getElemento().equals("Já existe contato com este nome.")) {
 			arquivo.gravar(linhaArquivo);
