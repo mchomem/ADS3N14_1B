@@ -92,7 +92,10 @@ public class CtrPrograma<T> {
 		}
 		
 		anterior = novo;
-		arquivo.gravar(linhaArquivo);
+		
+		if(!this.arvoreBinaria.getElemento().equals("Já existe contato com este nome.")) {
+			arquivo.gravar(linhaArquivo);
+		}
 		
 	}
 	
@@ -144,7 +147,8 @@ public class CtrPrograma<T> {
 						
 					}
 					
-					console.imprimir("Contato adicionado.");
+					console.imprimir(this.arvoreBinaria.getElemento());
+					this.arvoreBinaria.inicializaElemento();
 					console.imprimir("Qt. elementos atual: " + this.arvoreBinaria.getQtNo() + ((this.arvoreBinaria.getQtNo() > 1) ? " elementos" : "elemento"));
 					console.imprimir("Altura do nodo raiz: " + this.arvoreBinaria.getAltura());
 					break;

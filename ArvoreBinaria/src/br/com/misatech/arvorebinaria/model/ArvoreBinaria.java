@@ -110,6 +110,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				this.qtNo++;
 				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
 				this.altura = novo.getNivel();
+				// Informando estado do elemento.
+				this.elemento = "Contato inserido";
 				
 			}
 			
@@ -135,13 +137,17 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				this.qtNo++;
 				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
 				this.altura = novo.getNivel();
+				// Informando estado do elemento.
+				this.elemento = "Contato inserido";
 				
 			}
 			
 		// Se for igual? Não deixa inserir (na árvore binária de pesquisa não pode haver valores iguais).
-		// OBS: atenção para os seguintes casos: Misael e misael, pois o compareTo distingue a caixa alta da baixa.
+		// OBS: atenção para os seguintes casos: Palavra e palavra, pois o compareTo distingue a caixa alta da baixa.
 		} else if(cmp == 0) {
 			
+			// Informando estado do elemento.
+			this.elemento = "Já existe contato com este nome.";
 			return;
 			
 		}
