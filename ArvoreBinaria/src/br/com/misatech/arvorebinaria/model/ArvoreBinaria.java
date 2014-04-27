@@ -14,6 +14,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	private String elemento;
 	private long comparacao;
 	private long qtNo;
+	private long altura;
 	
 	/**
 	 * Construtor padrão da classe.
@@ -103,7 +104,12 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 				// Insere o novo nó a esquerda do nó atual.
 				atual.setGalhoEsquerda(novo);
+				// Configura o nivel do nó.
+				novo.setNivel(atual.getNivel() + 1);
+				// Conta o nó.
 				this.qtNo++;
+				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
+				this.altura = novo.getNivel();
 				
 			}
 			
@@ -123,7 +129,12 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				
 				// Insere o novo nó a direita do nó atual.
 				atual.setGalhoDireita(novo);
+				// Configura o nivel do nó.
+				novo.setNivel(atual.getNivel() + 1);
+				// Conta o nó.
 				this.qtNo++;
+				// Obtém a altura do nôdo raiz em relação ao novo nó inserido.
+				this.altura = novo.getNivel();
 				
 			}
 		}
@@ -364,8 +375,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		return qtNo;
 	}
 
-	public void setQtNo(long qtNo) {
-		this.qtNo = qtNo;
+	public long getAltura() {
+		return altura;
 	}
 	
 }

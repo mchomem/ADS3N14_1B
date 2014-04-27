@@ -112,7 +112,6 @@ public class CtrPrograma<T> {
 		}
 		
 		console.imprimir("*** Contato Telefônico ***");
-		console.imprimir("Altura atual: ");
 		String opcao = "";
 		
 		do {
@@ -147,6 +146,7 @@ public class CtrPrograma<T> {
 					
 					console.imprimir("Contato adicionado.");
 					console.imprimir("Qt. elementos atual: " + this.arvoreBinaria.getQtNo() + ((this.arvoreBinaria.getQtNo() > 1) ? " elementos" : "elemento"));
+					console.imprimir("Altura do nodo raiz: " + this.arvoreBinaria.getAltura());
 					break;
 					
 				case "2":

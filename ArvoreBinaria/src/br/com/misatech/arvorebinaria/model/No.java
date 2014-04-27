@@ -14,6 +14,7 @@ public class No<T> {
 	private No<T> pai;
 	private No<T> galhoDireita;
 	private No<T> galhoEsquerda;
+	private long nivel;
 	
 	public No() {}
 
@@ -47,6 +48,14 @@ public class No<T> {
 
 	public void setGalhoEsquerda(No<T> galhoEsquerda) {
 		this.galhoEsquerda = galhoEsquerda;
+	}
+
+	public long getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(long nivel) {
+		this.nivel = nivel;
 	}
 
 }
