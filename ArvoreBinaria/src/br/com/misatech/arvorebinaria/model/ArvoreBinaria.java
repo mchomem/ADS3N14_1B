@@ -122,7 +122,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	}
 	
 	// Exclusão utilizando a idéia do link http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria_de_busca
-	// Decrementar o nível dos nós na exclusão.
+	// Decrementar o nível dos nós na exclusão e quantidade de nós.
 	// REVISAR!!! -> fez apenas um dos cenários de exclusão (nó com um filho)
 	public void excluir(No<T> atual, No<T> anterior ,String nome) {
 		
@@ -156,6 +156,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 					
 					// Elimina o nó.
 					atual = null;
+					this.qtNo--;
+					this.elemento = "Registro excluído";
 					return;
 					
 				}
@@ -180,6 +182,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 					
 					// Elimina o nó.
 					atual = null;
+					this.qtNo--;
 					this.elemento = "Registro excluído";
 					return;
 					
@@ -205,6 +208,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 					
 					// Elimina o nó.
 					atual = null;
+					this.qtNo--;
 					this.elemento = "Registro excluído";
 					return;
 					
@@ -213,7 +217,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				// O nó tem dois filhos?
 				if(atual.getGalhoEsquerda() != null && atual.getGalhoDireita() != null) {
 					
-					
+					// Por implementar.
 					
 				}
 				
