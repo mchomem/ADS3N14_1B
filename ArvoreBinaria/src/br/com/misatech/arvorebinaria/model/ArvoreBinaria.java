@@ -121,9 +121,15 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	// Exclusão utilizando a idéia do link http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria_de_busca
-	// Decrementar o nível dos nós na exclusão e quantidade de nós.
-	// REVISAR!!! -> fez apenas um dos cenários de exclusão (nó com um filho)
+	// 
+	/**
+	 * Exclui um nó da árvore, adimitindo os cenários: nó folha, nó com um fiho e nó com dois filhos.<br>
+	 * Utilizando a idéia do link http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria_de_busca
+	 * 
+	 * @param atual O nó a ser excluido onde será comparado o seu valor para ser excluído da árvore binária.
+	 * @param anterior O nó anterior ao nó atual.
+	 * @param nome O valor do nome pelo qual será feita a busca nos nós da árvore para exclusão.
+	 */
 	public void excluir(No<T> atual, No<T> anterior ,String nome) {
 		
 		int cmp = 0;
@@ -136,10 +142,10 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 			// Valor para exclusão foi localizado?
 			if(cmp == 0) {
 				
-				// O nó é folha (não tem galhos)?
+				// O nó para exclusão (atual) é folha (não tem galhos)?
 				if(atual.getGalhoEsquerda() == null && atual.getGalhoDireita() == null) {
 					
-					// Eliminar a referência do galho (esquerda ou direita) do nó anterior a este.
+					// Eliminar a referência do galho esquerda do nó anterior ao atual.
 					if(anterior.getGalhoEsquerda() != null) {
 						// O nó anterior aponta para o nó a ser excluido pelo galho da esquerda?
 						if(anterior.getGalhoEsquerda().getContato().getNome().equals(nome)) {
@@ -147,6 +153,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 						}
 					}
 					
+					// Eliminar a referência do galho direita do nó anterior ao atual.
 					if(anterior.getGalhoDireita() != null) {
 						// O nó anterior aponta para o nó a ser excluido pelo galho da direita?
 						if(anterior.getGalhoDireita().getContato().getNome().equals(nome)) {
@@ -162,21 +169,47 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 					
 				}
 				
-				// O nó tem um filho a esquerda?
+				
+				/* Duas situações para nó de exclusão ter filho a esquerda:
+				 * Legenda: A - nó anterior
+				 *          E - nó de exlusão
+				 *          F - nó filho
+				 *
+				 *
+				 *       A
+				 *      /
+				 *     E
+				 *    /
+				 *   F
+				 *
+				 *       A
+				 *        \
+				 *         E
+				 *        /
+				 *       F
+				 */
+				// O nó de exclusão (atual) tem um filho a esquerda?
 				if(atual.getGalhoEsquerda() != null && atual.getGalhoDireita() == null) {
 					
-					// Alterar a referência do galho (esquerda ou direita) do nó anterior a este.
+					// Alterar a referência do galho esquerda do nó anterior ao atual.
 					if(anterior.getGalhoEsquerda() != null) {
 						// O nó anterior aponta para o nó a ser excluido pelo galho da esquerda?
 						if(anterior.getGalhoEsquerda().getContato().getNome().equals(nome)) {
+							// O nó anteior recebe o nó filho do nó atual.
 							anterior.setGalhoEsquerda(atual.getGalhoEsquerda());
+							// O nó filho recebe o nível do nó aterior mais 1.
+							atual.getGalhoEsquerda().setNivel(anterior.getNivel() + 1);
 						}
 					}
 					
+					// Alterar a referência do galho direita do nó anterior ao atual.
 					if(anterior.getGalhoDireita() != null) {
 						// O nó anterior aponta para o nó a ser excluido pelo galho da direita?
 						if(anterior.getGalhoDireita().getContato().getNome().equals(nome)) {
+							// O nó anteior recebe o nó filho do nó atual.
 							anterior.setGalhoDireita(atual.getGalhoEsquerda());
+							// O nó filho recebe o nível do nó aterior mais 1.
+							atual.getGalhoEsquerda().setNivel(anterior.getNivel() + 1);
 						}
 					}
 					
@@ -188,21 +221,47 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 					
 				}
 				
-				// O nó tem um filho a direita?
+				
+				/* Duas situações para nó de exclusão ter filho a direita:
+				 *  Legenda: A - nó anterior
+				 *           E - nó de exlusão
+				 *           F - nó filho
+				 *
+				 *
+				 *        A
+				 *         \
+				 *          E
+				 *           \
+				 *            F
+				 *    
+				 *          A
+				 *         /
+				 *        E
+				 *         \
+				 *          F
+				 */
+				// O nó de exclusão (atual) tem um filho a direita?
 				if(atual.getGalhoEsquerda() == null && atual.getGalhoDireita() != null) {
 					
-					// Alterar a referência do galho (esquerda ou direita) do nó anterior a este.
+					// Alterar a referência do galho esquerda do nó anterior ao atual.
 					if(anterior.getGalhoEsquerda() != null) {
 						// O nó anterior aponta para o nó a ser excluido pelo galho da esquerda?
 						if(anterior.getGalhoEsquerda().getContato().getNome().equals(nome)) {
+							// O nó anteior recebe o nó filho do nó atual.
 							anterior.setGalhoEsquerda(atual.getGalhoDireita());
+							// O nó filho recebe o nível do nó aterior mais 1.
+							atual.getGalhoDireita().setNivel(anterior.getNivel() + 1);
 						}
 					}
 					
+					// Alterar a referência do galho direita do nó anterior ao atual.
 					if(anterior.getGalhoDireita() != null) {
 						// O nó anterior aponta para o nó a ser excluido pelo galho da direita?
 						if(anterior.getGalhoDireita().getContato().getNome().equals(nome)) {
+							// O nó anteior recebe o nó filho do nó atual.
 							anterior.setGalhoDireita(atual.getGalhoDireita());
+							// O nó filho recebe o nível do nó aterior mais 1.
+							atual.getGalhoDireita().setNivel(anterior.getNivel() + 1);
 						}
 					}
 					
