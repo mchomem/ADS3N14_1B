@@ -424,6 +424,22 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		}
 		
 	}
+	
+	public void consultarTudoSobreNo(No<T> no) {
+		
+		if(no != null) {
+	    	 
+			this.consultarTudoSobreNo(no.getGalhoEsquerda());
+	    	this.elemento += "No.Contato.Nome: " + no.getContato().getNome() + "\n"
+	    			+ "No.Contato.Número: " + no.getContato().getNumero() + "\n"
+	    			+ "No.Nível: " + no.getNivel() + "\n"
+	    			+ "No.Pai: " + ((no.getPai() != null) ? no.getPai().getContato().getNome() : "Não tem pai pois é raiz.") + "\n"
+	    			+ "No.Qt. filhos: " + ((no.getGalhoDireita() != null && no.getGalhoEsquerda() != null) ? "2" : (no.getGalhoDireita() != null || no.getGalhoEsquerda() != null) ? "1" : "0"  ) + "\n\n";
+	    	this.consultarTudoSobreNo(no.getGalhoDireita());
+	    	
+		}
+		
+	}
 
 	// Getters e Setters
 	public No<T> getRaiz() {

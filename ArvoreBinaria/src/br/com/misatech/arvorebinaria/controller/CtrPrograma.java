@@ -135,7 +135,8 @@ public class CtrPrograma<T> {
 			console.imprimir("4 - Relatório (InFixa)");
 			console.imprimir("5 - Relatório (PreFixa)");
 			console.imprimir("6 - Relatório (PosFixa)");
-			console.imprimir("7 - Sair\n");
+			console.imprimir("7 - Informações de cada nó (InFixa)");
+			console.imprimir("8 - Sair\n");
 			opcao = console.cursor("Escolha uma opção");
 			
 			switch(opcao) {
@@ -207,6 +208,13 @@ public class CtrPrograma<T> {
 					break;
 					
 				case "7":
+					console.imprimir("\n*** Informações de cada nó (InFixa) ***\n");
+					this.arvoreBinaria.consultarTudoSobreNo(this.arvoreBinaria.getRaiz());
+					console.imprimir(this.arvoreBinaria.getElemento());
+					this.arvoreBinaria.inicializaElemento();
+					break;
+					
+				case "8":
 					
 					this.finalizar();
 					break;
