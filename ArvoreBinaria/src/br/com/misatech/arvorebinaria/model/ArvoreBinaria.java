@@ -38,6 +38,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 		// A raiz da árvore irá receber o 1º nó. 
 		raiz = novo;
+		// A raiz não possui nó pai.
+		raiz.setPai(null);
 		// Contabiliza o nó.
 		this.qtNo++;
 		
@@ -71,6 +73,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 
 				// Insere o novo nó a esquerda do nó atual.
 				atual.setGalhoEsquerda(novo);
+				// Configura o pai do novo nó.
+				novo.setPai(atual);
 				// Configura o nivel do nó obtendo o nível do pai mais um.
 				novo.setNivel(atual.getNivel() + 1);
 				// Contabiliza o nó.
@@ -98,6 +102,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 				
 				// Insere o novo nó a direita do nó atual.
 				atual.setGalhoDireita(novo);
+				// Configura o pai do novo nó.
+				novo.setPai(atual);
 				// Configura o nivel do nó obtendo o nível do pai mais um.
 				novo.setNivel(atual.getNivel() + 1);
 				// Contabiliza o nó.
@@ -121,7 +127,6 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	// 
 	/**
 	 * Exclui um nó da árvore, adimitindo os cenários: nó folha, nó com um fiho e nó com dois filhos.<br>
 	 * Utilizando a idéia do link http://pt.wikipedia.org/wiki/%C3%81rvore_bin%C3%A1ria_de_busca
@@ -199,6 +204,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 							anterior.setGalhoEsquerda(atual.getGalhoEsquerda());
 							// O nó filho recebe o nível do nó aterior mais 1.
 							atual.getGalhoEsquerda().setNivel(anterior.getNivel() + 1);
+							// Configura o pai do nó filho.
+							atual.getGalhoEsquerda().setPai(anterior);
 						}
 					}
 					
@@ -210,6 +217,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 							anterior.setGalhoDireita(atual.getGalhoEsquerda());
 							// O nó filho recebe o nível do nó aterior mais 1.
 							atual.getGalhoEsquerda().setNivel(anterior.getNivel() + 1);
+							// Configura o pai do nó filho.
+							atual.getGalhoEsquerda().setPai(anterior);
 						}
 					}
 					
@@ -251,6 +260,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 							anterior.setGalhoEsquerda(atual.getGalhoDireita());
 							// O nó filho recebe o nível do nó aterior mais 1.
 							atual.getGalhoDireita().setNivel(anterior.getNivel() + 1);
+							// Configura o pai do nó filho.
+							atual.getGalhoDireita().setPai(anterior);
 						}
 					}
 					
@@ -262,6 +273,8 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 							anterior.setGalhoDireita(atual.getGalhoDireita());
 							// O nó filho recebe o nível do nó aterior mais 1.
 							atual.getGalhoDireita().setNivel(anterior.getNivel() + 1);
+							// Configura o pai do nó filho.
+							atual.getGalhoDireita().setPai(anterior);
 						}
 					}
 					
