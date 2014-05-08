@@ -309,7 +309,6 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 			
 		}
 		
-		
 	}
 	
 	public void consultar(No atual, String nome) {
