@@ -11,13 +11,17 @@ package br.com.misatech.arvorebinaria.model;
 public class No {
 	
 	private Contato contato;
-	private No pai;
-	private No galhoDireita;
-	private No galhoEsquerda;
-	private long nivel;
+	private No      pai;
+	private No      galhoDireita;
+	private No      galhoEsquerda;
+	private long    nivel;
 	
+	/**
+	 * Construtor padrão da classe.
+	 */
 	public No() {}
 
+	// Getters e Setters
 	public Contato getContato() {
 		return contato;
 	}
