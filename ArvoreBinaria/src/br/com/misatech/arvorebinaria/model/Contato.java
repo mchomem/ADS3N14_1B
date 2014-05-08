@@ -1,7 +1,7 @@
 package br.com.misatech.arvorebinaria.model;
 
 /**
- * Classe responsável que contém a definição de campos para um Contato telefônico.
+ * Classe contndo a definição de campos para um Contato telefônico.
  * 
  * @author Misael C. Homem
  * @since 1.00

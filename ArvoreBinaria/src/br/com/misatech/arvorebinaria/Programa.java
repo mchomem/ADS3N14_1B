@@ -17,8 +17,7 @@ public class Programa {
 
 	/**
 	 * Método principal da aplicação.
-	 * @param <T>
-	 * 
+     * 
 	 * @param args argumento de linha de comando (sem uso).
 	 */
 	public static void main(String []args) {

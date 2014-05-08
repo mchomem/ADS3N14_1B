@@ -10,7 +10,7 @@ package br.com.misatech.arvorebinaria.model;
  */
 public class ArvoreBinaria<T extends Comparable<T>> {
 
-	private No  raiz;
+	private No     raiz;
 	private String elemento;
 	private long   comparacao;
 	private long   qtNo;
@@ -425,16 +425,21 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
+	/**
+	 * Exibe relatório com informações básicas de um nó.
+	 * @param no
+	 */
 	public void consultarTudoSobreNo(No no) {
 		
 		if(no != null) {
 	    	 
 			this.consultarTudoSobreNo(no.getGalhoEsquerda());
-	    	this.elemento += "No.Contato.Nome: " + no.getContato().getNome() + "\n"
-	    			+ "No.Contato.Número: " + no.getContato().getNumero() + "\n"
-	    			+ "No.Nível: " + no.getNivel() + "\n"
-	    			+ "No.Pai: " + ((no.getPai() != null) ? no.getPai().getContato().getNome() : "Não tem pai pois é raiz.") + "\n"
-	    			+ "No.Qt. filhos: " + ((no.getGalhoDireita() != null && no.getGalhoEsquerda() != null) ? "2" : (no.getGalhoDireita() != null || no.getGalhoEsquerda() != null) ? "1" : "0"  ) + "\n\n";
+	    	this.elemento += "No.Contato.Nome: "    + no.getContato().getNome()
+			    	      + "\nNo.Contato.Número: " + no.getContato().getNumero()
+			    		  + "\nNo.Nível: "          + no.getNivel()
+			    		  + "\nNo.Pai: "            + ((no.getPai() != null) ? no.getPai().getContato().getNome() : "Não tem pai pois é raiz.")
+			    		  + "\nNo.Qt. filhos: "     + ((no.getGalhoDireita() != null && no.getGalhoEsquerda() != null) ? "2" : (no.getGalhoDireita() != null || no.getGalhoEsquerda() != null) ? "1" : "0")
+			    		  + "\n\n";
 	    	this.consultarTudoSobreNo(no.getGalhoDireita());
 	    	
 		}

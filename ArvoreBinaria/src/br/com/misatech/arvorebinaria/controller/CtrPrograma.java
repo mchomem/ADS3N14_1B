@@ -13,7 +13,6 @@ import br.com.misatech.arvorebinaria.view.Console;
  * Classe controladora
  * 
  * @author Misael C. Homem
- * @param <T>
  * @since 1.00
  */
 public class CtrPrograma {
