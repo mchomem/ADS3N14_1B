@@ -10,7 +10,7 @@ package br.com.misatech.arvorebinaria.model;
  */
 public class ArvoreBinaria<T extends Comparable<T>> {
 
-	private No<T>  raiz;
+	private No  raiz;
 	private String elemento;
 	private long   comparacao;
 	private long   qtNo;
@@ -30,7 +30,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * 
 	 * @param novo O 1º nó a ser inserido na árvore.
 	 */
-	public void inserir(No<T> novo) {
+	public void inserir(No novo) {
 		
 		// Define o galho a esquerda e a direita do novo elemento.
 		novo.setGalhoEsquerda(raiz);
@@ -51,7 +51,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * @param novo O novo nó que está entrando na árvore.
 	 * @param atual O nó atual para inciar a comparação.
 	 */
-	public void inserirFormaBST(No<T> novo, No<T> atual) {
+	public void inserirFormaBST(No novo, No atual) {
 		
 		int cmp = 0;
 		// Comparar os nomes do novo nó com o nó atual (já existente na árvore binária).
@@ -135,7 +135,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * @param anterior O nó anterior ao nó atual.
 	 * @param nome O valor do nome pelo qual será feita a busca nos nós da árvore para exclusão.
 	 */
-	public void excluir(No<T> atual, No<T> anterior ,String nome) {
+	public void excluir(No atual, No anterior ,String nome) {
 		
 		int cmp = 0;
 		
@@ -312,7 +312,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	public void consultar(No<T> atual, String nome) {
+	public void consultar(No atual, String nome) {
 
 		int cmp = 0;
 		
@@ -364,7 +364,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * 
 	 * @param no O nó raiz da árvore.
 	 */
-	public void inFixa(No<T> no) {
+	public void inFixa(No no) {
 		 
 		if(no != null) {
 	    	 
@@ -380,7 +380,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * Travessia pré-fixada.
 	 * @param no O nó raiz da árvore.
 	 */
-	public void preFixa(No<T> no) {
+	public void preFixa(No no) {
 		
 	    if(no != null) {
 	    	
@@ -396,7 +396,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * Travessia pós-fixada.
 	 * @param no O nó raiz da árvore.
 	 */
-	public void posFixa(No<T> no) {
+	public void posFixa(No no) {
 		
 	    if(no != null) {
 	    	
@@ -413,7 +413,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * 
 	 * @param no O nó raiz da árvore.
 	 */
-	public void formatarDadosArquivo(No<T> no) {
+	public void formatarDadosArquivo(No no) {
 		
 		if(no != null ) {
 			
@@ -425,7 +425,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
-	public void consultarTudoSobreNo(No<T> no) {
+	public void consultarTudoSobreNo(No no) {
 		
 		if(no != null) {
 	    	 
@@ -442,11 +442,11 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	}
 
 	// Getters e Setters
-	public No<T> getRaiz() {
+	public No getRaiz() {
 		return raiz;
 	}
 	
-	public void setRaiz(No<T> raiz) {
+	public void setRaiz(No raiz) {
 		this.raiz = raiz;
 	}
 	

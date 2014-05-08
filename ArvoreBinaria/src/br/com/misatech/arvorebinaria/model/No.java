@@ -8,12 +8,12 @@ package br.com.misatech.arvorebinaria.model;
  *
  * @param <T>
  */
-public class No<T> {
+public class No {
 	
 	private Contato contato;
-	private No<T> pai;
-	private No<T> galhoDireita;
-	private No<T> galhoEsquerda;
+	private No pai;
+	private No galhoDireita;
+	private No galhoEsquerda;
 	private long nivel;
 	
 	public No() {}
@@ -26,27 +26,27 @@ public class No<T> {
 		this.contato = contato;
 	}
 
-	public No<T> getPai() {
+	public No getPai() {
 		return pai;
 	}
 
-	public void setPai(No<T> pai) {
+	public void setPai(No pai) {
 		this.pai = pai;
 	}
 
-	public No<T> getGalhoDireita() {
+	public No getGalhoDireita() {
 		return galhoDireita;
 	}
 
-	public void setGalhoDireita(No<T> galhoDireita) {
+	public void setGalhoDireita(No galhoDireita) {
 		this.galhoDireita = galhoDireita;
 	}
 
-	public No<T> getGalhoEsquerda() {
+	public No getGalhoEsquerda() {
 		return galhoEsquerda;
 	}
 
-	public void setGalhoEsquerda(No<T> galhoEsquerda) {
+	public void setGalhoEsquerda(No galhoEsquerda) {
 		this.galhoEsquerda = galhoEsquerda;
 	}
 

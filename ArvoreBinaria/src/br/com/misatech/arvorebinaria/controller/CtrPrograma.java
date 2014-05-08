@@ -16,7 +16,7 @@ import br.com.misatech.arvorebinaria.view.Console;
  * @param <T>
  * @since 1.00
  */
-public class CtrPrograma<T> {
+public class CtrPrograma {
 	
 	private Console               console;
 	private ArvoreBinaria<String> arvoreBinaria;
@@ -52,14 +52,14 @@ public class CtrPrograma<T> {
 			// A árvore está vazia?
 			if(arvoreBinaria.getRaiz() == null) {
 				
-				No<String> novo = new No<String>();
+				No novo = new No();
 				novo.setContato(new Contato(valores[0], valores[1]));
 				arvoreBinaria.inserir(novo);
 				//anterior = novo; // <- Verificar a necessidade de uso do campo "anterior".
 				
 			} else {
 				
-				No<String> novo = new No<String>();
+				No novo = new No();
 				novo.setContato(new Contato(valores[0], valores[1]));
 				arvoreBinaria.inserirFormaBST(novo, this.arvoreBinaria.getRaiz());
 				
@@ -84,7 +84,7 @@ public class CtrPrograma<T> {
 		
 		// Grava o novo registro no arquivo utilizando a flag de cadastro ativo "S"
 		String linhaArquivo = nome + "|" + numero;
-		No<String> novo     = new No<String>();
+		No novo     = new No();
 		novo.setContato(new Contato(nome, numero));
 		
 		// A árvore possui algum nó?

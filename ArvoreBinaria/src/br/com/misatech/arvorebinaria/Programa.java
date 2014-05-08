@@ -21,9 +21,9 @@ public class Programa {
 	 * 
 	 * @param args argumento de linha de comando (sem uso).
 	 */
-	public static <T> void main(String []args) {
+	public static void main(String []args) {
 		
-		new CtrPrograma<T>().iniciar();
+		new CtrPrograma().iniciar();
 		
 	}
 	
