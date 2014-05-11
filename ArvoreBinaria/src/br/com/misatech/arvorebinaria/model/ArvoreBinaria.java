@@ -135,7 +135,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	 * @param anterior O nó anterior ao nó atual.
 	 * @param nome O valor do nome pelo qual será feita a busca nos nós da árvore para exclusão.
 	 */
-	public void excluir(No atual, No anterior ,String nome) {
+	public void excluir(No atual, No anterior, String nome) {
 		
 		int cmp = 0;
 		
@@ -311,6 +311,12 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 		
 	}
 	
+	/**
+	 * Dado um valor, consulta um nó existente varrendo a árvore a partir do nó raiz.  
+	 * 
+	 * @param atual
+	 * @param nome
+	 */
 	public void consultar(No atual, String nome) {
 
 		int cmp = 0;
